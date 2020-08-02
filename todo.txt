@@ -1,0 +1,18 @@
+- Image upload background
+- Segmentation hierarchy, subdivision and directions
+- Move segments with mouse
+- Save file export
+- React + JSS export
+- Serve statically on github.io
+--------------------------------------------------------------------
+- Average pixels color to get background color
+- Props and request from parent button
+- Component name
+- StyledComponents
+- React + CSS
+- margin padding
+--------------------------------------------------------------------
+- Live render?
+- Reuse Components?
+- Redux?
+- React Provider?
