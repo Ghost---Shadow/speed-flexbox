@@ -7,11 +7,12 @@ export const interp2D = (a, b, t) => ({
   y: interp(a.y, b.y, t),
 });
 
-export const interp1D = (a, b, t, direction) => {
+export const interp1D = (a, b, t, direction, start) => {
   const interpV = interp2D(a, b, t);
+  const c = start ? a : b;
   const lut = {
-    [DIRECTION_ROW]: { x: interpV.x, y: b.y },
-    [DIRECTION_COLUMN]: { y: interpV.y, x: b.x },
+    [DIRECTION_ROW]: { x: interpV.x, y: c.y },
+    [DIRECTION_COLUMN]: { y: interpV.y, x: c.x },
   };
   return lut[direction];
 };

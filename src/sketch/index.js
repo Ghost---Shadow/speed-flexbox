@@ -1,15 +1,16 @@
-import QuadTreeRender from './QuadTreeRender';
+import TreeRenderer from './TreeRenderer';
 
 /* eslint-disable no-param-reassign */
 const sketch = (p) => {
   let canvasWidth = window.innerWidth;
   let canvasHeight = window.innerHeight;
-  const quadTree = QuadTreeRender(p);
+  let tree = TreeRenderer(p);
   let img = null;
 
   p.setup = () => {
     // create canvas
     const c = p.createCanvas(canvasWidth, canvasHeight);
+    tree = TreeRenderer(p);
     c.drop(p.gotFile);
   };
 
@@ -31,11 +32,11 @@ const sketch = (p) => {
       p.image(img, 0, 0, p.width, p.height);
     }
 
-    quadTree.draw();
+    tree.draw();
   };
 
   p.mouseDragged = () => {
-    quadTree.mouseDragged();
+    tree.mouseDragged();
   };
 
   p.gotFile = (file) => {
@@ -46,6 +47,7 @@ const sketch = (p) => {
       const aspect = img.width / img.height;
       const newHeight = p.width / aspect;
       p.resizeCanvas(p.width, newHeight);
+      tree = TreeRenderer(p);
       // Draw the image onto the canvas
       // p.image(img, 0, 0, p.width, p.height);
     } else {

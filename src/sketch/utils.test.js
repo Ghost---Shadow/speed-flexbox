@@ -15,18 +15,18 @@ describe('utils', () => {
     });
   });
   describe('interp1D', () => {
-    it('should interpolate row wise', () => {
+    it('should interpolate row wise start', () => {
       const a = { x: 1, y: 1 };
       const b = { x: 3, y: 3 };
       const t = 0.25;
-      const actual = interp1D(a, b, t, DIRECTION_ROW);
-      expect(actual).toEqual({ x: 1.5, y: 3 });
+      const actual = interp1D(a, b, t, DIRECTION_ROW, true);
+      expect(actual).toEqual({ x: 1.5, y: 1 });
     });
-    it('should interpolate column wise', () => {
+    it('should interpolate column wise end', () => {
       const a = { x: 1, y: 1 };
       const b = { x: 3, y: 3 };
       const t = 0.25;
-      const actual = interp1D(a, b, t, DIRECTION_COLUMN);
+      const actual = interp1D(a, b, t, DIRECTION_COLUMN, false);
       expect(actual).toEqual({ x: 3, y: 1.5 });
     });
   });
