@@ -22,6 +22,7 @@ const sketch = (p) => {
     p.textSize(24);
     p.textAlign(p.CENTER);
     p.text('Drag an image file onto the canvas.', p.width / 2, p.height / 2);
+    p.text('Reload the page if the image disappears.', p.width / 2, p.height / 2 + 50);
     p.noLoop();
   };
 
@@ -30,7 +31,9 @@ const sketch = (p) => {
     if (file.type === 'image') {
       // Create an image DOM element but don't show it
       const img = p.createImg(file.data).hide();
-      p.resizeCanvas(img.width, img.height);
+      const aspect = img.width / img.height;
+      const newHeight = p.width / aspect;
+      p.resizeCanvas(p.width, newHeight);
       // Draw the image onto the canvas
       p.image(img, 0, 0, p.width, p.height);
     } else {
