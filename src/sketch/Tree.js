@@ -42,7 +42,6 @@ class Tree {
     const height = this.end.y - this.start.y;
     p.rect(this.start.x, this.start.y, width, height);
     this.children.forEach((child) => child.draw(p));
-    p.noLoop();
   }
 }
 
