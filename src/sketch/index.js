@@ -1,8 +1,10 @@
+import QuadTreeRender from './QuadTreeRender';
+
 /* eslint-disable no-param-reassign */
 const sketch = (p) => {
   let canvasWidth = window.innerWidth;
   let canvasHeight = window.innerHeight;
-  let startX = p.width / 2;
+  const quadTree = QuadTreeRender(p);
   let img = null;
 
   p.setup = () => {
@@ -18,8 +20,8 @@ const sketch = (p) => {
 
   p.draw = () => {
     if (!img) {
-      p.background(30);
-      p.fill(255);
+      p.background(255);
+      p.fill(30);
       p.noStroke();
       p.textSize(24);
       p.textAlign(p.CENTER);
@@ -29,14 +31,11 @@ const sketch = (p) => {
       p.image(img, 0, 0, p.width, p.height);
     }
 
-    p.fill(255, 255, 0, 20);
-    p.stroke(0);
-    p.rect(0, 0, startX, p.height);
-    p.rect(startX, 0, p.width, p.height);
+    quadTree.draw();
   };
 
   p.mouseDragged = () => {
-    startX = p.mouseX;
+    quadTree.mouseDragged();
   };
 
   p.gotFile = (file) => {
