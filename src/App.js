@@ -4,10 +4,10 @@ import P5Wrapper from 'react-p5-wrapper';
 import sketch from './sketch';
 
 const App = () => {
-  console.log();
+  const scale = 1.0;
   return (
     <div className="App">
-      <P5Wrapper sketch={sketch} width={1024 * 1.5} height={768 * 1.5} />
+      <P5Wrapper sketch={sketch} width={1024 * scale} height={768 * scale} />
     </div>
   );
 };
