@@ -29,11 +29,23 @@ const TreeRenderer = (p) => {
     active.setDirection(newDirection);
   };
 
+  const incrementSegments = () => {
+    if (root === null) return;
+    active.setSegments(active.segments + 1);
+  };
+
+  const decrementSegments = () => {
+    if (root === null) return;
+    active.setSegments(active.segments - 1);
+  };
+
   return {
     initialize,
     draw,
     mouseDragged,
     toggleDirection,
+    incrementSegments,
+    decrementSegments,
   };
 };
 

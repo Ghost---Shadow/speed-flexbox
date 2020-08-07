@@ -39,17 +39,13 @@ const sketch = (p) => {
     renderer.mouseDragged();
   };
 
-  // p.mouseReleased = () => {
-  //   console.log(p.mouseX, p.mouseY);
-  // };
-
   p.keyReleased = () => {
     const noop = () => null;
     const functionToInvoke = {
       87: () => console.log('W'), // W: Go up one parent
       83: () => console.log('S'), // S: Select child on cursor
-      68: () => console.log('D'), // D: Increase subdivision
-      65: () => console.log('A'), // A: Decrease subdivision
+      68: renderer.incrementSegments, // D: Increase subdivision
+      65: renderer.decrementSegments, // A: Decrease subdivision
       82: renderer.toggleDirection, // R: Switch direction
     }[p.keyCode] || noop;
     functionToInvoke();
