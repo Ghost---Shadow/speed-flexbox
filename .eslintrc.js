@@ -21,6 +21,7 @@ module.exports = {
   },
   plugins: [
     'react',
+    'classProperties'
   ],
   rules: {
     "react/jsx-filename-extension": 0
