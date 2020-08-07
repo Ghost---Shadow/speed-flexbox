@@ -4,13 +4,13 @@ import TreeRenderer from './TreeRenderer';
 const sketch = (p) => {
   let canvasWidth = window.innerWidth;
   let canvasHeight = window.innerHeight;
-  let tree = TreeRenderer(p);
+  const renderer = TreeRenderer(p);
   let img = null;
 
   p.setup = () => {
     // create canvas
     const c = p.createCanvas(canvasWidth, canvasHeight);
-    tree = TreeRenderer(p);
+    renderer.initialize();
     c.drop(p.gotFile);
   };
 
@@ -32,11 +32,27 @@ const sketch = (p) => {
       p.image(img, 0, 0, p.width, p.height);
     }
 
-    tree.draw();
+    renderer.draw();
   };
 
   p.mouseDragged = () => {
-    tree.mouseDragged();
+    renderer.mouseDragged();
+  };
+
+  // p.mouseReleased = () => {
+  //   console.log(p.mouseX, p.mouseY);
+  // };
+
+  p.keyReleased = () => {
+    const noop = () => null;
+    const functionToInvoke = {
+      87: () => console.log('W'), // W: Go up one parent
+      83: () => console.log('S'), // S: Select child on cursor
+      68: () => console.log('D'), // D: Increase subdivision
+      65: () => console.log('A'), // A: Decrease subdivision
+      82: renderer.toggleDirection, // R: Switch direction
+    }[p.keyCode] || noop;
+    functionToInvoke();
   };
 
   p.gotFile = (file) => {
@@ -47,7 +63,7 @@ const sketch = (p) => {
       const aspect = img.width / img.height;
       const newHeight = p.width / aspect;
       p.resizeCanvas(p.width, newHeight);
-      tree = TreeRenderer(p);
+      renderer.initialize();
       // Draw the image onto the canvas
       // p.image(img, 0, 0, p.width, p.height);
     } else {

@@ -2,17 +2,19 @@ import { interp1D } from './utils';
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
 
 class Tree {
+  static id = 0;
   constructor(start, end, direction, parent, segments) {
     this.start = start;
     this.end = end;
     this.direction = direction;
     this.parent = parent;
     this.children = [];
+    this.id = Tree.id += 1;
 
-    this.updateSegments(segments);
+    this.createSegments(segments);
   }
 
-  updateSegments(segments) {
+  createSegments(segments) {
     this.segments = segments;
     const { start, end, direction } = this;
 
@@ -27,6 +29,19 @@ class Tree {
     }
   }
 
+  recalculateSegments() {
+    const {
+      start, end, direction, segments,
+    } = this;
+    const t = 1 / segments;
+    for (let i = 0; i < segments; i += 1) {
+      const cStart = interp1D(start, end, i * t, direction, true);
+      const cEnd = interp1D(start, end, (i + 1) * t, direction, false);
+      this.children[i].cStart = cStart;
+      this.children[i].cEnd = cEnd;
+    }
+  }
+
   update(p) {
     if (this.children.length < 2) return;
 
@@ -35,6 +50,11 @@ class Tree {
 
     this.children[0].end[axis] = mouse;
     this.children[1].start[axis] = mouse;
+  }
+
+  setDirection(newDirection) {
+    this.direction = newDirection;
+    this.recalculateSegments();
   }
 
   draw(p) {
