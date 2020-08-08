@@ -17,6 +17,7 @@ class Tree {
     this.parent = parent;
     this.children = [];
     this.id = Tree.id;
+    this.depth = parent ? parent.depth + 1 : 0;
     Tree.id += 1;
 
     this.createSegments(segments);
@@ -91,14 +92,14 @@ class Tree {
     this.createSegments(newSegments);
   }
 
-  draw(p, active) {
+  draw(p, active = {}) {
     const width = this.end.x - this.start.x;
     const height = this.end.y - this.start.y;
     if (active.id === this.id) {
       p.fill(255, 255, 0, 20);
       p.stroke(255, 0, 0);
     } else {
-      p.fill(255, 255, 255, 20);
+      p.fill(255, 255, 255, Math.min(this.depth * 20, 255));
       p.stroke(0);
     }
     p.rect(this.start.x, this.start.y, width, height);

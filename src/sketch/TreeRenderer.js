@@ -12,42 +12,48 @@ const TreeRenderer = (p) => {
   };
 
   const mouseDragged = () => {
-    if (root === null) return;
+    if (!active) return;
     active.update(p);
   };
 
   const draw = () => {
-    if (root === null) return;
+    if (!root) return;
     root.draw(p, active);
   };
 
   const toggleDirection = () => {
-    if (root === null) return;
+    if (!root) return;
+    if (!active) return;
     const newDirection = active.direction === DIRECTION_COLUMN ? DIRECTION_ROW : DIRECTION_COLUMN;
     active.setDirection(newDirection);
   };
 
   const incrementSegments = () => {
-    if (root === null) return;
+    if (!root) return;
+    if (!active) return;
     active.setSegments(active.segments + 1);
   };
 
   const decrementSegments = () => {
-    if (root === null) return;
+    if (!root) return;
+    if (!active) return;
     active.setSegments(active.segments - 1);
   };
 
   const selectActive = () => {
+    if (!root) return;
     active = root.findActive(p.mouseX, p.mouseY);
   };
 
   const selectActivesParent = () => {
+    if (!active) return;
     if (active.parent) {
       active = active.parent;
     }
   };
 
   const pickSegment = () => {
+    if (!active) return;
     active.pickSegment(p);
   };
 
