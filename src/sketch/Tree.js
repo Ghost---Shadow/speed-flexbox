@@ -72,6 +72,13 @@ class Tree {
 
     this.children[leftChildIndex].end[axis] = clampedMouse;
     this.children[rightChildIndex].start[axis] = clampedMouse;
+
+    if (this.children[leftChildIndex].children) {
+      this.children[leftChildIndex].children = [];
+    }
+    if (this.children[rightChildIndex].children) {
+      this.children[rightChildIndex].children = [];
+    }
   }
 
   setDirection(newDirection) {
