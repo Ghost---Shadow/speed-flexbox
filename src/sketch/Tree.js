@@ -1,4 +1,6 @@
-import { interp1D, isPointInAabb, vec2 } from './utils';
+import {
+  interp1D, isPointInAabb, vec2, findDistance1D, argmMin,
+} from './utils';
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
 
 class Tree {
@@ -33,14 +35,29 @@ class Tree {
     }
   }
 
+  pickSegment(p) {
+    if (this.children.length < 2) return;
+
+    const axis = { [DIRECTION_ROW]: 'x', [DIRECTION_COLUMN]: 'y' }[this.direction];
+    const mouse = vec2(p.mouseX, p.mouseY);
+    const distances = this.children
+      .map((child) => findDistance1D(mouse, child.start, axis))
+      .slice(1);
+    const closestChildStart = argmMin(distances);
+
+    this.leftChildIndex = closestChildStart;
+    this.rightChildIndex = closestChildStart + 1;
+  }
+
   update(p) {
     if (this.children.length < 2) return;
 
     const axis = { [DIRECTION_ROW]: 'x', [DIRECTION_COLUMN]: 'y' }[this.direction];
     const mouse = { [DIRECTION_ROW]: p.mouseX, [DIRECTION_COLUMN]: p.mouseY }[this.direction];
 
-    this.children[0].end[axis] = mouse;
-    this.children[1].start[axis] = mouse;
+    const { leftChildIndex, rightChildIndex } = this;
+    this.children[leftChildIndex].end[axis] = mouse;
+    this.children[rightChildIndex].start[axis] = mouse;
   }
 
   setDirection(newDirection) {

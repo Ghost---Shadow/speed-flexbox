@@ -1,5 +1,5 @@
 import Tree from './Tree';
-import { DIRECTION_ROW } from './constants';
+import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
 import { vec2 } from './utils';
 
 describe('Tree', () => {
@@ -47,6 +47,73 @@ describe('Tree', () => {
       t22.id = 't22';
 
       expect(t0.findActive(1.25, 0.5).id).toBe('t21');
+    });
+  });
+  describe('pickSegment', () => {
+    it('should find the indexes of two closest children (first child left half)', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(3, 3), DIRECTION_ROW, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(1, 3), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(1, 0), vec2(2, 3), DIRECTION_ROW, t0, 1);
+      const t3 = new Tree(vec2(2, 0), vec2(3, 3), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2, t3];
+      const p = { mouseX: 0.25, mouseY: 0.25 };
+      t0.pickSegment(p);
+      expect(t0.leftChildIndex).toBe(0);
+      expect(t0.rightChildIndex).toBe(1);
+    });
+    it('should find the indexes of two closest children (first child right half)', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(3, 3), DIRECTION_ROW, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(1, 3), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(1, 0), vec2(2, 3), DIRECTION_ROW, t0, 1);
+      const t3 = new Tree(vec2(2, 0), vec2(3, 3), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2, t3];
+      const p = { mouseX: 0.75, mouseY: 0.75 };
+      t0.pickSegment(p);
+      expect(t0.leftChildIndex).toBe(0);
+      expect(t0.rightChildIndex).toBe(1);
+    });
+    it('should find the indexes of two closest children (last child left half)', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(3, 3), DIRECTION_ROW, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(1, 3), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(1, 0), vec2(2, 3), DIRECTION_ROW, t0, 1);
+      const t3 = new Tree(vec2(2, 0), vec2(3, 3), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2, t3];
+      const p = { mouseX: 2.25, mouseY: 2.25 };
+      t0.pickSegment(p);
+      expect(t0.leftChildIndex).toBe(1);
+      expect(t0.rightChildIndex).toBe(2);
+    });
+    it('should find the indexes of two closest children (last child right half)', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(3, 3), DIRECTION_ROW, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(1, 3), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(1, 0), vec2(2, 3), DIRECTION_ROW, t0, 1);
+      const t3 = new Tree(vec2(2, 0), vec2(3, 3), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2, t3];
+      const p = { mouseX: 2.75, mouseY: 2.75 };
+      t0.pickSegment(p);
+      expect(t0.leftChildIndex).toBe(1);
+      expect(t0.rightChildIndex).toBe(2);
+    });
+    it('should find the indexes of two closest children column (middle child left half)', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(3, 3), DIRECTION_COLUMN, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(3, 1), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(0, 1), vec2(3, 2), DIRECTION_ROW, t0, 1);
+      const t3 = new Tree(vec2(0, 2), vec2(3, 3), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2, t3];
+      const p = { mouseX: 1.25, mouseY: 1.25 };
+      t0.pickSegment(p);
+      expect(t0.leftChildIndex).toBe(0);
+      expect(t0.rightChildIndex).toBe(1);
     });
   });
 });

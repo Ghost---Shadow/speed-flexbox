@@ -39,6 +39,10 @@ const sketch = (p) => {
     renderer.mouseDragged();
   };
 
+  p.mousePressed = () => {
+    renderer.pickSegment();
+  };
+
   p.keyReleased = () => {
     const noop = () => null;
     const functionToInvoke = {

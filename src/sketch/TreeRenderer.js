@@ -47,6 +47,10 @@ const TreeRenderer = (p) => {
     }
   };
 
+  const pickSegment = () => {
+    active.pickSegment(p);
+  };
+
   return {
     initialize,
     draw,
@@ -56,6 +60,7 @@ const TreeRenderer = (p) => {
     decrementSegments,
     selectActive,
     selectActivesParent,
+    pickSegment,
   };
 };
 

@@ -25,3 +25,10 @@ export const isPointInAabb = (p, a, b) => {
 };
 
 export const vec2 = (x, y) => ({ x, y });
+
+// https://gist.github.com/engelen/fbce4476c9e68c52ff7e5c2da5c24a28
+export function argmMin(array) {
+  return array.map((x, i) => [x, i]).reduce((r, a) => (a[0] < r[0] ? a : r))[1];
+}
+
+export const findDistance1D = (a, b, axis) => Math.abs(a[axis] - b[axis]);
