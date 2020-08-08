@@ -116,4 +116,64 @@ describe('Tree', () => {
       expect(t0.rightChildIndex).toBe(1);
     });
   });
+  describe('moveActiveSegment', () => {
+    let backupPadding = null;
+    beforeAll(() => {
+      backupPadding = Tree.PADDING;
+    });
+    beforeEach(() => {
+      Tree.PADDING = 0;
+    });
+    afterAll(() => {
+      Tree.PADDING = backupPadding;
+    });
+    it('should not crash if less than 2 children', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(3, 3), DIRECTION_ROW, null, 1);
+      const p = { mouseX: 0.25, mouseY: 0.25 };
+      t0.moveActiveSegment(p);
+    });
+    it('should move the start and end of picked segment', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(2, 2), DIRECTION_ROW, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(1, 2), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(1, 0), vec2(2, 2), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2];
+      const p = { mouseX: 0.25, mouseY: 0.25 };
+      t0.pickSegment(p);
+      t0.moveActiveSegment(p);
+      expect(t0.children[0].end).toEqual(vec2(0.25, 2));
+      expect(t0.children[1].start).toEqual(vec2(0.25, 0));
+    });
+    it('should not move beyond upper boundary (row)', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(2, 2), DIRECTION_ROW, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(1, 2), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(1, 0), vec2(2, 2), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2];
+      const p1 = { mouseX: 0.25, mouseY: 0.25 };
+      const p2 = { mouseX: 3, mouseY: 3 };
+      Tree.PADDING = 0.1;
+      t0.pickSegment(p1);
+      t0.moveActiveSegment(p2);
+      expect(t0.children[0].end).toEqual(vec2(1.9, 2));
+      expect(t0.children[1].start).toEqual(vec2(1.9, 0));
+    });
+    it('should not move beyond lower boundary (column)', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(2, 2), DIRECTION_COLUMN, null, 2);
+
+      const t1 = new Tree(vec2(1, 1), vec2(2, 2), DIRECTION_ROW, t0, 1);
+      const t2 = new Tree(vec2(1, 1), vec2(2, 3), DIRECTION_ROW, t0, 1);
+
+      t0.children = [t1, t2];
+      const p1 = { mouseX: 0.25, mouseY: 0.25 };
+      const p2 = { mouseX: 0, mouseY: 0 };
+      Tree.PADDING = 0.1;
+      t0.pickSegment(p1);
+      t0.moveActiveSegment(p2);
+      expect(t0.children[0].end).toEqual(vec2(2, 1.1));
+      expect(t0.children[1].start).toEqual(vec2(1, 1.1));
+    });
+  });
 });

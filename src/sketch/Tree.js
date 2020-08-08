@@ -1,10 +1,14 @@
 import {
-  interp1D, isPointInAabb, vec2, findDistance1D, argmMin,
+  interp1D, isPointInAabb, vec2, findDistance1D, argmMin, clamp,
 } from './utils';
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
 
 class Tree {
+  // Counter for generated tree nodes
   static id = 0;
+
+  // Min distance between segments/AKA min size of child
+  static PADDING = 10;
 
   constructor(start, end, direction, parent, segments) {
     this.start = start;
@@ -50,14 +54,24 @@ class Tree {
   }
 
   update(p) {
+    this.moveActiveSegment(p);
+  }
+
+  moveActiveSegment(p) {
     if (this.children.length < 2) return;
 
     const axis = { [DIRECTION_ROW]: 'x', [DIRECTION_COLUMN]: 'y' }[this.direction];
     const mouse = { [DIRECTION_ROW]: p.mouseX, [DIRECTION_COLUMN]: p.mouseY }[this.direction];
 
     const { leftChildIndex, rightChildIndex } = this;
-    this.children[leftChildIndex].end[axis] = mouse;
-    this.children[rightChildIndex].start[axis] = mouse;
+
+    const lowerBound = this.children[leftChildIndex].start[axis];
+    const upperBound = this.children[rightChildIndex].end[axis];
+
+    const clampedMouse = clamp(mouse, lowerBound + Tree.PADDING, upperBound - Tree.PADDING);
+
+    this.children[leftChildIndex].end[axis] = clampedMouse;
+    this.children[rightChildIndex].start[axis] = clampedMouse;
   }
 
   setDirection(newDirection) {

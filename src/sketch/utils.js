@@ -32,3 +32,5 @@ export function argmMin(array) {
 }
 
 export const findDistance1D = (a, b, axis) => Math.abs(a[axis] - b[axis]);
+
+export const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
