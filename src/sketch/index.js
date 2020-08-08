@@ -42,8 +42,8 @@ const sketch = (p) => {
   p.keyReleased = () => {
     const noop = () => null;
     const functionToInvoke = {
-      87: () => console.log('W'), // W: Go up one parent
-      83: () => console.log('S'), // S: Select child on cursor
+      87: renderer.selectActivesParent, // W: Go up one parent
+      83: renderer.selectActive, // S: Select child on cursor
       68: renderer.incrementSegments, // D: Increase subdivision
       65: renderer.decrementSegments, // A: Decrease subdivision
       82: renderer.toggleDirection, // R: Switch direction

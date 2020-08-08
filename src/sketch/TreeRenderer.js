@@ -18,9 +18,7 @@ const TreeRenderer = (p) => {
 
   const draw = () => {
     if (root === null) return;
-    p.fill(255, 255, 0, 20);
-    p.stroke(0);
-    root.draw(p);
+    root.draw(p, active);
   };
 
   const toggleDirection = () => {
@@ -39,6 +37,16 @@ const TreeRenderer = (p) => {
     active.setSegments(active.segments - 1);
   };
 
+  const selectActive = () => {
+    active = root.findActive(p.mouseX, p.mouseY);
+  };
+
+  const selectActivesParent = () => {
+    if (active.parent) {
+      active = active.parent;
+    }
+  };
+
   return {
     initialize,
     draw,
@@ -46,6 +54,8 @@ const TreeRenderer = (p) => {
     toggleDirection,
     incrementSegments,
     decrementSegments,
+    selectActive,
+    selectActivesParent,
   };
 };
 

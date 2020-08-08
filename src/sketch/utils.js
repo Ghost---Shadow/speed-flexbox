@@ -16,3 +16,12 @@ export const interp1D = (a, b, t, direction, start) => {
   };
   return lut[direction];
 };
+
+export const isPointInAabb = (p, a, b) => {
+  const isWithinX = p.x >= a.x && p.x <= b.x;
+  const isWithinY = p.y >= a.y && p.y <= b.y;
+
+  return isWithinX && isWithinY;
+};
+
+export const vec2 = (x, y) => ({ x, y });
