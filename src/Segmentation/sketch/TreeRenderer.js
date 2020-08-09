@@ -1,73 +1,75 @@
 import Tree from './Tree';
 
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
+import { vec2 } from './utils';
 
-const TreeRenderer = (p) => {
-  let root = null;
-  let active = null;
+// Abstract class
+class TreeRenderer {
+  static root = null;
 
-  const initialize = () => {
-    root = new Tree({ x: 0, y: 0 }, { x: p.width, y: p.height }, DIRECTION_ROW, null, 2);
-    active = root;
+  static active = null;
+
+  static p = null;
+
+  static initialize = (p) => {
+    TreeRenderer.p = p;
+    TreeRenderer.root = new Tree(vec2(0, 0), vec2(p.width, p.height), DIRECTION_ROW, null, 2);
+    TreeRenderer.active = TreeRenderer.root;
   };
 
-  const mouseDragged = () => {
-    if (!active) return;
-    active.update(p);
+  static mouseDragged = () => {
+    if (!TreeRenderer.active) return;
+    TreeRenderer.active.update(TreeRenderer.p);
   };
 
-  const draw = () => {
-    if (!root) return;
-    root.draw(p, active);
+  static draw = () => {
+    if (!TreeRenderer.root) return;
+    TreeRenderer.root.draw(TreeRenderer.p, TreeRenderer.active);
   };
 
-  const toggleDirection = () => {
-    if (!root) return;
-    if (!active) return;
-    const newDirection = active.direction === DIRECTION_COLUMN ? DIRECTION_ROW : DIRECTION_COLUMN;
-    active.setDirection(newDirection);
+  static toggleDirection = () => {
+    if (!TreeRenderer.root) return;
+    if (!TreeRenderer.active) return;
+    const newDirection = TreeRenderer.active.direction === DIRECTION_COLUMN
+      ? DIRECTION_ROW : DIRECTION_COLUMN;
+    TreeRenderer.active.setDirection(newDirection);
   };
 
-  const incrementSegments = () => {
-    if (!root) return;
-    if (!active) return;
-    active.setSegments(active.segments + 1);
+  static incrementSegments = () => {
+    if (!TreeRenderer.root) return;
+    if (!TreeRenderer.active) return;
+    TreeRenderer.active.setSegments(TreeRenderer.active.segments + 1);
   };
 
-  const decrementSegments = () => {
-    if (!root) return;
-    if (!active) return;
-    active.setSegments(active.segments - 1);
+  static decrementSegments = () => {
+    if (!TreeRenderer.root) return;
+    if (!TreeRenderer.active) return;
+    TreeRenderer.active.setSegments(TreeRenderer.active.segments - 1);
   };
 
-  const selectActive = () => {
-    if (!root) return;
-    active = root.findActive(p.mouseX, p.mouseY);
+  static selectActive = () => {
+    if (!TreeRenderer.root) return;
+    const { p } = TreeRenderer;
+    TreeRenderer.active = TreeRenderer.root.findActive(p.mouseX, p.mouseY);
   };
 
-  const selectActivesParent = () => {
-    if (!active) return;
-    if (active.parent) {
-      active = active.parent;
+  static selectActivesParent = () => {
+    if (!TreeRenderer.active) return;
+    if (TreeRenderer.active.parent) {
+      TreeRenderer.active = TreeRenderer.active.parent;
     }
   };
 
-  const pickSegment = () => {
-    if (!active) return;
-    active.pickSegment(p);
+  static pickSegment = () => {
+    if (!TreeRenderer.active) return;
+    TreeRenderer.active.pickSegment(TreeRenderer.p);
   };
 
-  return {
-    initialize,
-    draw,
-    mouseDragged,
-    toggleDirection,
-    incrementSegments,
-    decrementSegments,
-    selectActive,
-    selectActivesParent,
-    pickSegment,
-  };
-};
+  static dumpAst = () => TreeRenderer.root.toJson()
+
+  static loadAst = (ast) => {
+    console.log(ast);
+  }
+}
 
 export default TreeRenderer;

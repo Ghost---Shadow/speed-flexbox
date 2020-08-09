@@ -4,13 +4,12 @@ import TreeRenderer from './TreeRenderer';
 const sketch = (p) => {
   let canvasWidth = window.innerWidth;
   let canvasHeight = window.innerHeight;
-  const renderer = TreeRenderer(p);
   let img = null;
 
   p.setup = () => {
     // create canvas
     const c = p.createCanvas(canvasWidth, canvasHeight);
-    renderer.initialize();
+    TreeRenderer.initialize(p);
     c.drop(p.gotFile);
   };
 
@@ -18,7 +17,7 @@ const sketch = (p) => {
     canvasWidth = props.width;
     canvasHeight = props.height;
     p.resizeCanvas(props.width, props.height);
-    renderer.initialize();
+    TreeRenderer.initialize(p);
   };
 
   p.draw = () => {
@@ -34,25 +33,25 @@ const sketch = (p) => {
       p.image(img, 0, 0, p.width, p.height);
     }
 
-    renderer.draw();
+    TreeRenderer.draw();
   };
 
   p.mouseDragged = () => {
-    renderer.mouseDragged();
+    TreeRenderer.mouseDragged();
   };
 
   p.mousePressed = () => {
-    renderer.pickSegment();
+    TreeRenderer.pickSegment();
   };
 
   p.keyReleased = () => {
     const noop = () => null;
     const functionToInvoke = {
-      87: renderer.selectActivesParent, // W: Go up one parent
-      83: renderer.selectActive, // S: Select child on cursor
-      68: renderer.incrementSegments, // D: Increase subdivision
-      65: renderer.decrementSegments, // A: Decrease subdivision
-      82: renderer.toggleDirection, // R: Switch direction
+      87: TreeRenderer.selectActivesParent, // W: Go up one parent
+      83: TreeRenderer.selectActive, // S: Select child on cursor
+      68: TreeRenderer.incrementSegments, // D: Increase subdivision
+      65: TreeRenderer.decrementSegments, // A: Decrease subdivision
+      82: TreeRenderer.toggleDirection, // R: Switch direction
     }[p.keyCode] || noop;
     functionToInvoke();
   };
@@ -65,7 +64,7 @@ const sketch = (p) => {
       const aspect = img.width / img.height;
       const newHeight = p.width / aspect;
       p.resizeCanvas(p.width, newHeight);
-      renderer.initialize();
+      TreeRenderer.initialize(p);
       // Draw the image onto the canvas
       // p.image(img, 0, 0, p.width, p.height);
     } else {

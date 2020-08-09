@@ -121,6 +121,14 @@ class Tree {
 
     return candidates[0];
   }
+
+  toJson() {
+    return {
+      id: this.id,
+      direction: this.direction,
+      children: this.children.map((c) => c.toJson()),
+    };
+  }
 }
 
 export default Tree;

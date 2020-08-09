@@ -5,9 +5,11 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import Button from '@material-ui/core/Button';
 
 import sketch from './sketch';
 import useWindowDimensions from '../useWindowDimensions';
+import TreeRenderer from './sketch/TreeRenderer';
 
 const useStyles = makeStyles(() => ({
   wrapper: {
@@ -51,12 +53,27 @@ const Segmentation = () => {
   const defaultWidth = width * 0.7;
   const defaultHeight = (defaultWidth / 16) * 9;
 
+  const onQuickSave = () => {
+    const ast = TreeRenderer.dumpAst();
+    localStorage.setItem('ast', JSON.stringify(ast));
+  };
+
+  const onQuickLoad = () => {
+    const ast = JSON.parse(localStorage.getItem('ast') || '{}');
+    TreeRenderer.loadAst(ast);
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.mainWrapper}>
         <P5Wrapper sketch={sketch} width={defaultWidth} height={defaultHeight} />
       </div>
       <Paper className={classes.drawerWrapper}>
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <Button variant="contained" color="primary" onClick={onQuickSave}>Quick Save</Button>
+          <Button variant="contained" color="primary" onClick={onQuickLoad}>Quick Load</Button>
+        </div>
+        <Divider />
         <Controls />
         <Divider />
       </Paper>
