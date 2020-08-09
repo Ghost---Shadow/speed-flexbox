@@ -176,4 +176,78 @@ describe('Tree', () => {
       expect(t0.children[1].start).toEqual(vec2(1, 1.1));
     });
   });
+  describe('toJson', () => {
+    it('should serialize to a JSON', () => {
+      const t0 = new Tree(vec2(0, 0), vec2(4, 2), DIRECTION_ROW, null, 2);
+
+      const t1 = new Tree(vec2(0, 0), vec2(1, 2), DIRECTION_ROW, t0, 2);
+      const t2 = new Tree(vec2(1, 0), vec2(4, 2), DIRECTION_COLUMN, t0, 2);
+
+      const t11 = new Tree(vec2(0, 0), vec2(0.25, 2), DIRECTION_COLUMN, t1, 1);
+      const t12 = new Tree(vec2(0.25, 0), vec2(1, 2), DIRECTION_COLUMN, t1, 1);
+
+      const t21 = new Tree(vec2(1, 0), vec2(4, 1), DIRECTION_COLUMN, t2, 1);
+      const t22 = new Tree(vec2(1, 1), vec2(4, 2), DIRECTION_COLUMN, t2, 1);
+
+      t0.children = [t1, t2];
+      t1.children = [t11, t12];
+      t2.children = [t21, t22];
+
+      t0.id = 't0';
+      t1.id = 't1';
+      t2.id = 't2';
+      t11.id = 't11';
+      t12.id = 't12';
+      t21.id = 't21';
+      t22.id = 't22';
+
+      const expected = {
+        id: 't0',
+        direction: DIRECTION_ROW,
+        flex: 1,
+        children: [
+          {
+            id: 't1',
+            direction: DIRECTION_ROW,
+            flex: 0.25,
+            children: [
+              {
+                id: 't11',
+                flex: 0.25,
+                direction: DIRECTION_COLUMN,
+                children: [],
+              },
+              {
+                id: 't12',
+                flex: 0.75,
+                direction: DIRECTION_COLUMN,
+                children: [],
+              },
+            ],
+          },
+          {
+            id: 't2',
+            direction: DIRECTION_COLUMN,
+            flex: 0.75,
+            children: [
+              {
+                id: 't21',
+                flex: 0.5,
+                direction: DIRECTION_COLUMN,
+                children: [],
+              },
+              {
+                id: 't22',
+                flex: 0.5,
+                direction: DIRECTION_COLUMN,
+                children: [],
+              },
+            ],
+          },
+        ],
+      };
+
+      expect(t0.toJson()).toEqual(expected);
+    });
+  });
 });

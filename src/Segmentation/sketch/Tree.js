@@ -43,7 +43,7 @@ class Tree {
   pickSegment(p) {
     if (this.children.length < 2) return;
 
-    const axis = { [DIRECTION_ROW]: 'x', [DIRECTION_COLUMN]: 'y' }[this.direction];
+    const axis = this.getMajorAxis();
     const mouse = vec2(p.mouseX, p.mouseY);
     const distances = this.children
       .map((child) => findDistance1D(mouse, child.start, axis))
@@ -58,10 +58,14 @@ class Tree {
     this.moveActiveSegment(p);
   }
 
+  getMajorAxis() {
+    return { [DIRECTION_ROW]: 'x', [DIRECTION_COLUMN]: 'y' }[this.direction];
+  }
+
   moveActiveSegment(p) {
     if (this.children.length < 2) return;
 
-    const axis = { [DIRECTION_ROW]: 'x', [DIRECTION_COLUMN]: 'y' }[this.direction];
+    const axis = this.getMajorAxis();
     const mouse = { [DIRECTION_ROW]: p.mouseX, [DIRECTION_COLUMN]: p.mouseY }[this.direction];
 
     const { leftChildIndex, rightChildIndex } = this;
@@ -123,8 +127,16 @@ class Tree {
   }
 
   toJson() {
+    let flex = 1;
+    if (this.parent) {
+      const pAxis = this.parent.getMajorAxis();
+      const pSize = this.parent.end[pAxis] - this.parent.start[pAxis];
+      const size = this.end[pAxis] - this.start[pAxis];
+      flex = size / pSize;
+    }
     return {
       id: this.id,
+      flex,
       direction: this.direction,
       children: this.children.map((c) => c.toJson()),
     };
