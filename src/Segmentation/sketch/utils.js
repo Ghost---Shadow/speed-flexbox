@@ -34,3 +34,8 @@ export function argmMin(array) {
 export const findDistance1D = (a, b, axis) => Math.abs(a[axis] - b[axis]);
 
 export const clamp = (v, min, max) => Math.min(max, Math.max(min, v));
+
+export const cumulativeSum = (arr) => arr.reduce((r, a) => {
+  r.push(((r.length && r[r.length - 1]) || 0) + a);
+  return r;
+}, []);

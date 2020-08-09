@@ -54,13 +54,11 @@ const Segmentation = () => {
   const defaultHeight = (defaultWidth / 16) * 9;
 
   const onQuickSave = () => {
-    const ast = TreeRenderer.dumpAst();
-    localStorage.setItem('ast', JSON.stringify(ast));
+    TreeRenderer.dumpAst(true);
   };
 
   const onQuickLoad = () => {
-    const ast = JSON.parse(localStorage.getItem('ast') || '{}');
-    TreeRenderer.loadAst(ast);
+    TreeRenderer.loadAst();
   };
 
   const onClear = () => {

@@ -14,6 +14,7 @@ class TreeRenderer {
   static initialize = (p) => {
     TreeRenderer.p = p;
     TreeRenderer.root = new Tree(vec2(0, 0), vec2(p.width, p.height), DIRECTION_ROW, null, 2);
+    TreeRenderer.loadAst();
     TreeRenderer.active = TreeRenderer.root;
   };
 
@@ -65,7 +66,7 @@ class TreeRenderer {
     TreeRenderer.active.pickSegment(TreeRenderer.p);
   };
 
-  static dumpAst = () => {
+  static dumpAst = (writeLocalStorage = false) => {
     if (!TreeRenderer.root) {
       return {
         flex: 1,
@@ -73,11 +74,27 @@ class TreeRenderer {
         children: [],
       };
     }
-    return TreeRenderer.root.toJson();
+    const ast = TreeRenderer.root.toJson();
+    if (writeLocalStorage) {
+      localStorage.setItem('ast', JSON.stringify(ast));
+    }
+    return ast;
   }
 
-  static loadAst = (ast) => {
-    console.log(ast);
+  static loadAst = (ast = null) => {
+    if (!TreeRenderer.root) return;
+    Tree.id = 0;
+    if (ast === null) {
+      const serialAst = localStorage.getItem('ast');
+      if (serialAst) {
+        const validAst = JSON.parse(serialAst);
+        TreeRenderer.root.fromJson(validAst);
+        TreeRenderer.active = TreeRenderer.root;
+      }
+    } else {
+      TreeRenderer.root.fromJson(ast);
+      TreeRenderer.active = TreeRenderer.root;
+    }
   }
 }
 

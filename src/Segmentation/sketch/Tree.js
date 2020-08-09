@@ -1,5 +1,5 @@
 import {
-  interp1D, isPointInAabb, vec2, findDistance1D, argmMin, clamp,
+  interp1D, isPointInAabb, vec2, findDistance1D, argmMin, clamp, cumulativeSum,
 } from './utils';
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
 
@@ -23,17 +23,24 @@ class Tree {
     this.createSegments(segments);
   }
 
-  createSegments(segments) {
+  createSegments(segments, weights = []) {
     this.children = [];
+    const w = [...weights];
+    if (weights.length !== segments) {
+      for (let i = 0; i < segments; i += 1) {
+        w[i] = 1 / segments;
+      }
+    }
+    const cumW = cumulativeSum(w);
+    cumW.unshift(0);
 
     this.segments = segments;
     const { start, end, direction } = this;
 
     if (segments > 1) {
-      const t = 1 / segments;
       for (let i = 0; i < segments; i += 1) {
-        const cStart = interp1D(start, end, i * t, direction, true);
-        const cEnd = interp1D(start, end, (i + 1) * t, direction, false);
+        const cStart = interp1D(start, end, cumW[i], direction, true);
+        const cEnd = interp1D(start, end, cumW[i + 1], direction, false);
         const child = new Tree(cStart, cEnd, DIRECTION_ROW, this, 1);
         this.children.push(child);
       }
@@ -140,6 +147,19 @@ class Tree {
       direction: this.direction,
       children: this.children.map((c) => c.toJson()),
     };
+  }
+
+  fromJson(ast) {
+    if (!ast.id) return;
+
+    this.id = ast.id;
+    this.direction = ast.direction;
+    const weights = ast.children.map((c) => c.flex);
+    this.segments = Math.max(ast.children.length, 1);
+    this.createSegments(this.segments, weights);
+    this.children.forEach((child, i) => {
+      child.fromJson(ast.children[i]);
+    });
   }
 }
 
