@@ -17,6 +17,8 @@ const sketch = (p) => {
   p.myCustomRedrawAccordingToNewPropsHandler = (props) => {
     canvasWidth = props.width;
     canvasHeight = props.height;
+    p.resizeCanvas(props.width, props.height);
+    renderer.initialize();
   };
 
   p.draw = () => {
