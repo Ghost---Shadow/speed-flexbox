@@ -1,10 +1,11 @@
 import React from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-import Paper from '@material-ui/core/Paper';
-import makeStyles from '@material-ui/core/styles/makeStyles';
-import Typography from '@material-ui/core/Typography';
 
-import { Divider } from '@material-ui/core';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+
 import sketch from '../sketch';
 import useWindowDimensions from '../useWindowDimensions';
 
