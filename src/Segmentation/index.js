@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 import { Divider } from '@material-ui/core';
 import sketch from '../sketch';
+import useWindowDimensions from '../useWindowDimensions';
 
 const useStyles = makeStyles(() => ({
   wrapper: {
@@ -44,7 +45,9 @@ const Controls = () => {
 const Segmentation = () => {
   const classes = useStyles();
 
-  const defaultWidth = window.innerWidth * 0.7;
+  const { width } = useWindowDimensions();
+
+  const defaultWidth = width * 0.7;
   const defaultHeight = (defaultWidth / 16) * 9;
 
   return (
