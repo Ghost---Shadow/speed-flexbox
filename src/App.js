@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   tabWrapper: {
-    backgroundColor: 'ORANGE',
+    backgroundColor: '#FF8300',
     color: 'WHITE',
   },
   tabPannelWrapper: {
