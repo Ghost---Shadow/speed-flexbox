@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
-import sketch from '../sketch';
+import sketch from './sketch';
 import useWindowDimensions from '../useWindowDimensions';
 
 const useStyles = makeStyles(() => ({
