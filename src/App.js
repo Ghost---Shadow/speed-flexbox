@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import queryString from 'query-string';
+
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -52,8 +55,15 @@ const useStyles = makeStyles((theme) => ({
 
 const App = () => {
   const classes = useStyles();
-  const [value, setValue] = useState(0);
-  const handleChange = (event, newValue) => setValue(newValue);
+
+  const queryTab = Number.parseInt(queryString.parse(window.location.search).tab, 10) || 0;
+
+  const [tab, setTab] = useState(queryTab);
+
+  const handleChange = (event, newValue) => {
+    window.history.pushState({}, '', `?tab=${newValue}`);
+    setTab(newValue);
+  };
 
   const tabLabels = ['Segmentation', 'Post Processing', 'Code Generation'];
 
@@ -64,18 +74,18 @@ const App = () => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.tabWrapper}>
-        <Tabs value={value} onChange={handleChange} aria-label="Tabs">
+        <Tabs value={tab} onChange={handleChange} aria-label="Tabs">
           {tabs}
         </Tabs>
       </div>
       <div className={classes.tabPannelWrapper}>
-        <TabPanel value={value} index={0}>
+        <TabPanel value={tab} index={0}>
           <Segmentation />
         </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={tab} index={1}>
           <PostProcessing />
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={tab} index={2}>
           <CodeGeneration />
         </TabPanel>
       </div>

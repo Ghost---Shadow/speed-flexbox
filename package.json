@@ -7,6 +7,7 @@
     "@material-ui/icons": "^4.9.1",
     "p5": "^1.1.9",
     "prop-types": "^15.7.2",
+    "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-p5-wrapper": "^2.0.0",

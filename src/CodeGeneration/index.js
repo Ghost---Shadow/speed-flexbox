@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import a11yDark from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
@@ -68,7 +68,7 @@ const CodeGeneration = () => {
   return (
     <div className={classes.wrapper}>
       <div className={classes.mainWrapper}>
-        <SyntaxHighlighter showLineNumbers language="json" style={docco} className={classes.syntaxHighlighter}>
+        <SyntaxHighlighter showLineNumbers language="json" style={a11yDark} className={classes.syntaxHighlighter}>
           {codeString}
         </SyntaxHighlighter>
       </div>
