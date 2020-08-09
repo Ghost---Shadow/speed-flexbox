@@ -31,25 +31,6 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const sampleCode = `
-{
-  "direction": "row",
-  "flex": 1,
-  "children":[
-    {
-      "flex": 8,
-      "direction": "column".
-      "children":[]
-    }.
-    {
-      "flex": 2,
-      "direction": "column".
-      "children":[]
-    }
-  ]
-}
-`;
-
 const FileSelector = () => {
   const classes = useStyles();
   return (
@@ -63,7 +44,9 @@ const FileSelector = () => {
 const CodeGeneration = () => {
   const classes = useStyles();
 
-  const codeString = sampleCode;
+  const ast = JSON.parse(localStorage.getItem('ast') || '{"message":"No ast found"}');
+
+  const codeString = JSON.stringify(ast, null, 2);
 
   return (
     <div className={classes.wrapper}>

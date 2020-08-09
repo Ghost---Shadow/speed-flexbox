@@ -9,6 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
 import Segmentation from './Segmentation';
+import TreeRenderer from './Segmentation/sketch/TreeRenderer';
 import PostProcessing from './PostProcessing';
 import CodeGeneration from './CodeGeneration';
 
@@ -61,6 +62,8 @@ const App = () => {
   const [tab, setTab] = useState(queryTab);
 
   const handleChange = (event, newValue) => {
+    const ast = TreeRenderer.dumpAst();
+    localStorage.setItem('ast', JSON.stringify(ast));
     window.history.pushState({}, '', `?tab=${newValue}`);
     setTab(newValue);
   };

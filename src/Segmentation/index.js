@@ -63,6 +63,10 @@ const Segmentation = () => {
     TreeRenderer.loadAst(ast);
   };
 
+  const onClear = () => {
+    localStorage.clear('ast');
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.mainWrapper}>
@@ -70,8 +74,9 @@ const Segmentation = () => {
       </div>
       <Paper className={classes.drawerWrapper}>
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-          <Button variant="contained" color="primary" onClick={onQuickSave}>Quick Save</Button>
-          <Button variant="contained" color="primary" onClick={onQuickLoad}>Quick Load</Button>
+          <Button variant="contained" color="primary" onClick={onQuickSave}>Save</Button>
+          <Button variant="contained" color="primary" onClick={onQuickLoad}>Load</Button>
+          <Button variant="contained" color="primary" onClick={onClear}>Clear</Button>
         </div>
         <Divider />
         <Controls />

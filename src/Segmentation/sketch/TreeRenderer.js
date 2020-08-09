@@ -65,7 +65,16 @@ class TreeRenderer {
     TreeRenderer.active.pickSegment(TreeRenderer.p);
   };
 
-  static dumpAst = () => TreeRenderer.root.toJson()
+  static dumpAst = () => {
+    if (!TreeRenderer.root) {
+      return {
+        flex: 1,
+        direction: 'row',
+        children: [],
+      };
+    }
+    return TreeRenderer.root.toJson();
+  }
 
   static loadAst = (ast) => {
     console.log(ast);
