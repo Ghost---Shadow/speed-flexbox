@@ -1,5 +1,11 @@
 const generate = () => {
-  const code = '{wrapper1: {backgroundColor:\'black\'} }';
+  const code = `
+  {
+    wrapper1:{
+      backgroundColor:'black'
+    } 
+  }
+  `;
   return code;
 };
 
