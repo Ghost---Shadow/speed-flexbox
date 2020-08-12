@@ -1,5 +1,7 @@
+import { generateClassName } from './utils';
+
 const generateHelper = (ast) => {
-  const name = `wrapper${ast.id}`;
+  const name = generateClassName(ast);
   const self = `
     ${name}: {
       display: 'flex',
