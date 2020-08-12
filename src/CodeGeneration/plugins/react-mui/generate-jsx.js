@@ -18,6 +18,12 @@ const generate = (ast) => {
       ${dom}
     )
   }
+
+  MyComponent.propTypes = {
+    // TODO
+  }
+
+  export default MyComponent;
   `;
   return code;
 };
