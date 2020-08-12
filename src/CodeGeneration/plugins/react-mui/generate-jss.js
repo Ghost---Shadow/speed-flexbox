@@ -1,4 +1,4 @@
-import { generateClassName } from './utils';
+import { generateClassName, round } from './utils';
 
 const generateHelper = (ast) => {
   const name = generateClassName(ast);
@@ -6,7 +6,7 @@ const generateHelper = (ast) => {
     ${name}: {
       display: 'flex',
       flexDirection: '${ast.direction}',
-      flex: ${ast.flex},
+      flex: ${round(ast.flex)},
     }
   `;
 
