@@ -150,7 +150,7 @@ class Tree {
   }
 
   fromJson(ast) {
-    if (!ast.id) return;
+    if (ast.id === undefined) return;
 
     this.id = ast.id;
     this.direction = ast.direction;
