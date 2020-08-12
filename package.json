@@ -5,6 +5,8 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "file-saver": "^2.0.2",
+    "jszip": "^3.5.0",
     "p5": "^1.1.9",
     "prettier": "^2.0.5",
     "prop-types": "^15.7.2",

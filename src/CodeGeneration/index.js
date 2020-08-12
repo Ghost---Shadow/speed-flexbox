@@ -15,6 +15,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
+import * as Jszip from 'jszip';
+import FileSaver from 'file-saver';
+
 import { availablePlugins, plugins } from './plugins';
 
 const useStyles = makeStyles(() => ({
@@ -114,7 +117,15 @@ const CodeGeneration = () => {
     setCurrentFileIndex(0);
   }, [pluginType]);
 
-  const onDownload = () => null;
+  const onDownload = async () => {
+    const zip = new Jszip();
+    fileNames.forEach((fileName) => {
+      zip.file(fileName, generation.files[fileName]);
+    });
+    zip.file('ast.json', JSON.stringify(ast));
+    const content = await zip.generateAsync({ type: 'blob' });
+    FileSaver.saveAs(content, 'code.zip');
+  };
 
   return (
     <div className={classes.wrapper}>
