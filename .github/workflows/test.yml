@@ -1,9 +1,9 @@
 # https://github.com/marketplace/actions/deploy-to-github-pages
 
-name: Build and Deploy
+name: Test
 on:
   push:
-    branches:
+    branches-ignore:
       - master
 jobs:
   build-and-deploy:
@@ -18,15 +18,3 @@ jobs:
         run: |
           yarn
           yarn test
-
-      - name: Build
-        run: |
-          yarn
-          yarn build
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.5.9
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: build # The folder the action should deploy.
