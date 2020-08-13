@@ -1,0 +1,2 @@
+(this["webpackJsonpspeed-flexbox"]=this["webpackJsonpspeed-flexbox"]||[]).push([[77],{359:function(e,s,a){"use strict";function t(e){e.languages.hsts={directive:{pattern:/\b(?:max-age=|includeSubDomains|preload)/,alias:"keyword"},safe:{pattern:/\d{8,}/,alias:"selector"},unsafe:{pattern:/\d{1,7}/,alias:"function"}}}e.exports=t,t.displayName="hsts",t.aliases=[]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_hsts.d7ac561a.chunk.js.map

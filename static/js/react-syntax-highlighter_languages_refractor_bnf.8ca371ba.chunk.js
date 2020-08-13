@@ -1,0 +1,2 @@
+(this["webpackJsonpspeed-flexbox"]=this["webpackJsonpspeed-flexbox"]||[]).push([[22],{308:function(n,e,t){"use strict";function s(n){n.languages.bnf={string:{pattern:/"[^\r\n"]*"|'[^\r\n']*'/},definition:{pattern:/<[^<>\r\n\t]+>(?=\s*::=)/,alias:["rule","keyword"],inside:{punctuation:/^<|>$/}},rule:{pattern:/<[^<>\r\n\t]+>/,inside:{punctuation:/^<|>$/}},operator:/::=|[|()[\]{}*+?]|\.{3}/},n.languages.rbnf=n.languages.bnf}n.exports=s,s.displayName="bnf",s.aliases=["rbnf"]}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_refractor_bnf.8ca371ba.chunk.js.map
