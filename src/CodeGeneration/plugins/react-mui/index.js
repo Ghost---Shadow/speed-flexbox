@@ -3,19 +3,18 @@ import parserBabel from 'prettier/parser-babel';
 
 import generateJsx from './generate-jsx';
 import generateStorybook from './generate-storybook';
+import generateDebugCss from './generate-debug-css';
 
 const generate = (ast) => {
   const jsxCode = generateJsx(ast);
   const storybookCode = generateStorybook(ast);
+  const debugCssCode = generateDebugCss();
   const opts = { parser: 'babel', plugins: [parserBabel] };
   const files = {
-    'MyComponent.js': jsxCode,
-    'MyComponent.stories.js': storybookCode,
+    'MyComponent.js': prettier.format(jsxCode, opts),
+    'MyComponent.stories.js': prettier.format(storybookCode, opts),
+    'debug.css': debugCssCode,
   };
-
-  Object.keys(files).forEach((fileName) => {
-    files[fileName] = prettier.format(files[fileName], opts);
-  });
 
   return {
     language: 'jsx',

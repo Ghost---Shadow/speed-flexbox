@@ -60,9 +60,11 @@ describe('generate-jss', () => {
     });
     expect(prettyCode).toMatchInlineSnapshot(`
       "import React from 'react';
-      import PropTypes from 'prop-types';
+      // import PropTypes from 'prop-types';
 
       import makeStyles from '@material-ui/core/styles/makeStyles';
+
+      import './debug.css'; // For debugging
 
       const useStyles = makeStyles({
         wrappert0: {

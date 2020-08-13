@@ -6,9 +6,11 @@ const generate = (ast) => {
   const dom = generateDom(ast);
   const code = `
   import React from 'react';
-  import PropTypes from 'prop-types';
+  // import PropTypes from 'prop-types';
 
   import makeStyles from '@material-ui/core/styles/makeStyles';
+
+  import './debug.css'; // For debugging
 
   const useStyles = makeStyles(${jss});
 
