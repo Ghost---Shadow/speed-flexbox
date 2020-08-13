@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import a11yDark from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
+import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+import dark from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
@@ -133,7 +133,7 @@ const CodeGeneration = () => {
         <SyntaxHighlighter
           showLineNumbers
           language={generation.language}
-          style={a11yDark}
+          style={dark}
           className={classes.syntaxHighlighter}
         >
           {code}
