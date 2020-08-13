@@ -1,7 +1,7 @@
 import { generateClassName } from './utils';
 
 const generate = (ast) => {
-  const childStringArr = ast.children.length === 0 ? ['&nbsp'] : ast.children.map(generate);
+  const childStringArr = ast.children.length === 0 ? ['.'] : ast.children.map(generate);
 
   const className = generateClassName(ast);
 

@@ -107,15 +107,15 @@ describe('generate-jss', () => {
         return (
           <div className={classes.wrappert0}>
             <div className={classes.wrappert1}>
-              <div className={classes.wrappert11}>&nbsp</div>
+              <div className={classes.wrappert11}>.</div>
 
-              <div className={classes.wrappert12}>&nbsp</div>
+              <div className={classes.wrappert12}>.</div>
             </div>
 
             <div className={classes.wrappert2}>
-              <div className={classes.wrappert21}>&nbsp</div>
+              <div className={classes.wrappert21}>.</div>
 
-              <div className={classes.wrappert22}>&nbsp</div>
+              <div className={classes.wrappert22}>.</div>
             </div>
           </div>
         );
