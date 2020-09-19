@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/speed-flexbox/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/speed-flexbox/static/js/main.f15a97d6.chunk.js",
-    "main.js.map": "/speed-flexbox/static/js/main.f15a97d6.chunk.js.map",
+    "main.js": "/speed-flexbox/static/js/main.b6b5effa.chunk.js",
+    "main.js.map": "/speed-flexbox/static/js/main.b6b5effa.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abap.js": "/speed-flexbox/static/js/react-syntax-highlighter_languages_refractor_abap.05f39229.chunk.js",
     "react-syntax-highlighter_languages_refractor_abap.js.map": "/speed-flexbox/static/js/react-syntax-highlighter_languages_refractor_abap.05f39229.chunk.js.map",
     "react-syntax-highlighter_languages_refractor_abnf.js": "/speed-flexbox/static/js/react-syntax-highlighter_languages_refractor_abnf.19b03b75.chunk.js",
@@ -421,22 +421,22 @@
     "react-syntax-highlighter_languages_refractor_zig.js.map": "/speed-flexbox/static/js/react-syntax-highlighter_languages_refractor_zig.fcf89ed0.chunk.js.map",
     "runtime-main.js": "/speed-flexbox/static/js/runtime-main.c924452c.js",
     "runtime-main.js.map": "/speed-flexbox/static/js/runtime-main.c924452c.js.map",
-    "static/js/210.b8a6ae20.chunk.js": "/speed-flexbox/static/js/210.b8a6ae20.chunk.js",
-    "static/js/210.b8a6ae20.chunk.js.map": "/speed-flexbox/static/js/210.b8a6ae20.chunk.js.map",
+    "static/js/210.0603c787.chunk.js": "/speed-flexbox/static/js/210.0603c787.chunk.js",
+    "static/js/210.0603c787.chunk.js.map": "/speed-flexbox/static/js/210.0603c787.chunk.js.map",
     "static/js/211.9fcf06cf.chunk.js": "/speed-flexbox/static/js/211.9fcf06cf.chunk.js",
     "static/js/211.9fcf06cf.chunk.js.map": "/speed-flexbox/static/js/211.9fcf06cf.chunk.js.map",
     "static/js/212.843501e7.chunk.js": "/speed-flexbox/static/js/212.843501e7.chunk.js",
     "static/js/212.843501e7.chunk.js.map": "/speed-flexbox/static/js/212.843501e7.chunk.js.map",
     "index.html": "/speed-flexbox/index.html",
-    "precache-manifest.e58a0813f7c0e8dad0e5a73059db8285.js": "/speed-flexbox/precache-manifest.e58a0813f7c0e8dad0e5a73059db8285.js",
+    "precache-manifest.64ab1f2aebd1b3e5cdb85ef17b79d617.js": "/speed-flexbox/precache-manifest.64ab1f2aebd1b3e5cdb85ef17b79d617.js",
     "service-worker.js": "/speed-flexbox/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/speed-flexbox/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/210.b8a6ae20.chunk.js.LICENSE.txt": "/speed-flexbox/static/js/210.b8a6ae20.chunk.js.LICENSE.txt"
+    "static/js/210.0603c787.chunk.js.LICENSE.txt": "/speed-flexbox/static/js/210.0603c787.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.c924452c.js",
-    "static/js/210.b8a6ae20.chunk.js",
+    "static/js/210.0603c787.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.f15a97d6.chunk.js"
+    "static/js/main.b6b5effa.chunk.js"
   ]
 }
