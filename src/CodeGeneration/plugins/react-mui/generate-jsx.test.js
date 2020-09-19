@@ -107,8 +107,8 @@ describe('generate-jss', () => {
       MyComponent.propTypes = {
         prop1: PropTypes.string.isRequired,
         prop2: PropTypes.string.isRequired,
-        TODO,
-        TODO,
+        prop3: PropTypes.func.isRequired,
+        TODO: PropTypes.string.isRequired,
       };
 
       export default MyComponent;

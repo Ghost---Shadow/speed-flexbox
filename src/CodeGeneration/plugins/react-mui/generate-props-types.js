@@ -7,11 +7,17 @@ const labelGhostFormatter = (ghost) => {
   return `${name}: PropTypes.string.isRequired`;
 };
 
+const buttonGhostFormatter = (ghost) => {
+  const name = generateGhostPropName(ghost);
+
+  return `${name}: PropTypes.func.isRequired`;
+};
+
 const generateHelper = (ast) => {
   const ghostFormatterLookup = {
     [LABEL_GHOST]: labelGhostFormatter,
-    [BUTTON_GHOST]: () => 'TODO',
-    [INPUT_FIELD_GHOST]: () => 'TODO',
+    [BUTTON_GHOST]: buttonGhostFormatter,
+    [INPUT_FIELD_GHOST]: () => 'TODO: PropTypes.string.isRequired',
   };
 
   const ghostPropArr = ast.ghosts.map((ghost) => ghostFormatterLookup[ghost.type](ghost));
