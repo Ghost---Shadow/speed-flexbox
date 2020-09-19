@@ -5,6 +5,7 @@ import {
   DIRECTION_ROW,
   DIRECTION_COLUMN,
 } from '../../../Segmentation/sketch/constants';
+import { LABEL_GHOST } from '../../../constants/types';
 
 describe('generate-jss', () => {
   it('should generate JSS from ast', () => {
@@ -23,14 +24,17 @@ describe('generate-jss', () => {
               flex: 0.25,
               direction: DIRECTION_COLUMN,
               children: [],
+              ghosts: [{ id: 1, type: LABEL_GHOST }],
             },
             {
               id: 't12',
               flex: 0.75,
               direction: DIRECTION_COLUMN,
               children: [],
+              ghosts: [],
             },
           ],
+          ghosts: [],
         },
         {
           id: 't2',
@@ -42,16 +46,23 @@ describe('generate-jss', () => {
               flex: 0.5,
               direction: DIRECTION_COLUMN,
               children: [],
+              ghosts: [],
             },
             {
               id: 't22',
               flex: 0.5,
               direction: DIRECTION_COLUMN,
               children: [],
+              ghosts: [
+                { id: 2, type: LABEL_GHOST },
+                { id: 3, type: LABEL_GHOST },
+              ],
             },
           ],
+          ghosts: [],
         },
       ],
+      ghosts: [],
     };
     const code = `const styles = ${generate(ast)}`;
     const prettyCode = prettier.format(code, {
@@ -75,6 +86,11 @@ describe('generate-jss', () => {
           flexDirection: 'column',
           flex: 0.25,
         },
+        ghost1: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
         wrappert12: {
           display: 'flex',
           flexDirection: 'column',
@@ -94,6 +110,16 @@ describe('generate-jss', () => {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.5,
+        },
+        ghost2: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        ghost3: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
         },
       };
       "

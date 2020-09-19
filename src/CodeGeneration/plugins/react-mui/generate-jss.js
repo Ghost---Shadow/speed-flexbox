@@ -1,4 +1,15 @@
-import { generateClassName, round } from './utils';
+import { generateClassName, generateGhostClassName, round } from './utils';
+
+const ghostFormatter = (ghost) => {
+  const name = generateGhostClassName(ghost);
+  return `
+  ${name}: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+  `;
+};
 
 const generateHelper = (ast) => {
   const name = generateClassName(ast);
@@ -10,9 +21,10 @@ const generateHelper = (ast) => {
     }
   `;
 
+  const ghostArr = ast.ghosts.map(ghostFormatter);
   const childStringArr = ast.children.map((childAst) => generateHelper(childAst));
 
-  return [self].concat(childStringArr);
+  return [self].concat(ghostArr).concat(childStringArr);
 };
 
 const generate = (ast) => {

@@ -1,7 +1,10 @@
 import { LABEL_GHOST } from '../../../constants/types';
-import { generateClassName } from './utils';
+import { generateClassName, generateGhostClassName, generateGhostPropName } from './utils';
 
-const labelGhostFormatter = (ghost) => `<div className={classes.ghost${ghost.id}}>{prop${ghost.id}}</div>`;
+const labelGhostFormatter = (ghost) => `
+<div className={classes.${generateGhostClassName(ghost)}}>
+  {${generateGhostPropName(ghost)}}
+</div>`;
 
 const generate = (ast) => {
   const ghostFormatterLookup = {

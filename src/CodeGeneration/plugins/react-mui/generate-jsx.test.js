@@ -5,6 +5,7 @@ import {
   DIRECTION_ROW,
   DIRECTION_COLUMN,
 } from '../../../Segmentation/sketch/constants';
+import { LABEL_GHOST } from '../../../constants/types';
 
 describe('generate-jss', () => {
   it('should generate JSS from ast', () => {
@@ -23,7 +24,7 @@ describe('generate-jss', () => {
               flex: 0.25,
               direction: DIRECTION_COLUMN,
               children: [],
-              ghosts: [],
+              ghosts: [{ id: 1, type: LABEL_GHOST }],
             },
             {
               id: 't12',
@@ -52,7 +53,10 @@ describe('generate-jss', () => {
               flex: 0.5,
               direction: DIRECTION_COLUMN,
               children: [],
-              ghosts: [],
+              ghosts: [
+                { id: 2, type: LABEL_GHOST },
+                { id: 3, type: LABEL_GHOST },
+              ],
             },
           ],
           ghosts: [],
@@ -89,6 +93,11 @@ describe('generate-jss', () => {
           flexDirection: 'column',
           flex: 0.25,
         },
+        ghost1: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
         wrappert12: {
           display: 'flex',
           flexDirection: 'column',
@@ -109,6 +118,16 @@ describe('generate-jss', () => {
           flexDirection: 'column',
           flex: 0.5,
         },
+        ghost2: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
+        ghost3: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
       });
 
       const MyComponent = (props) => {
@@ -116,7 +135,9 @@ describe('generate-jss', () => {
         return (
           <div className={classes.wrappert0}>
             <div className={classes.wrappert1}>
-              <div className={classes.wrappert11}>.</div>
+              <div className={classes.wrappert11}>
+                <div className={classes.ghost1}>{prop1}</div>
+              </div>
 
               <div className={classes.wrappert12}>.</div>
             </div>
@@ -124,7 +145,10 @@ describe('generate-jss', () => {
             <div className={classes.wrappert2}>
               <div className={classes.wrappert21}>.</div>
 
-              <div className={classes.wrappert22}>.</div>
+              <div className={classes.wrappert22}>
+                <div className={classes.ghost2}>{prop2}</div>
+                <div className={classes.ghost3}>{prop3}</div>
+              </div>
             </div>
           </div>
         );
