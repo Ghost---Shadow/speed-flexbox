@@ -36,6 +36,13 @@ describe('generate-dom', () => {
               onChange={(e) => setGhostState4(e.target.value)}
               value={ghostState4}
             />
+
+            <input
+              type=\\"text\\"
+              className={classes.ghost5}
+              onChange={(e) => setGhostState5(e.target.value)}
+              value={ghostState5}
+            />
           </div>
         </div>
       </div>;

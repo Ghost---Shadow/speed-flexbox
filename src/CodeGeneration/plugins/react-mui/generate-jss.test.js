@@ -68,6 +68,11 @@ describe('generate-jss', () => {
           alignItems: 'center',
           justifyContent: 'center',
         },
+        ghost5: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
       };
       "
     `);

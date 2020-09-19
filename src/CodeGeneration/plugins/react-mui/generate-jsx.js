@@ -2,12 +2,14 @@ import generateJss from './generate-jss';
 import generateDom from './generate-dom';
 import generateProps from './generate-props';
 import generatePropsTypes from './generate-props-types';
+import generateState from './generate-state';
 
 const generate = (ast) => {
   const jss = generateJss(ast);
   const dom = generateDom(ast);
   const props = generateProps(ast);
   const propTypes = generatePropsTypes(ast);
+  const state = generateState(ast);
 
   const code = `
   import React from 'react';
@@ -21,6 +23,7 @@ const generate = (ast) => {
 
   const MyComponent = (${props}) => {
     const classes = useStyles(${props});
+    ${state}
     return (
       ${dom}
     )

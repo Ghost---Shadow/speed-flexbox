@@ -75,10 +75,17 @@ describe('generate-jss', () => {
           alignItems: 'center',
           justifyContent: 'center',
         },
+        ghost5: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
       });
 
       const MyComponent = ({ prop1, prop2, prop3 }) => {
         const classes = useStyles({ prop1, prop2, prop3 });
+        const [ghostState4, setGhostState4] = React.useState('');
+        const [ghostState5, setGhostState5] = React.useState('');
         return (
           <div className={classes.wrappert0}>
             <div className={classes.wrappert1}>
@@ -103,6 +110,13 @@ describe('generate-jss', () => {
                   className={classes.ghost4}
                   onChange={(e) => setGhostState4(e.target.value)}
                   value={ghostState4}
+                />
+
+                <input
+                  type=\\"text\\"
+                  className={classes.ghost5}
+                  onChange={(e) => setGhostState5(e.target.value)}
+                  value={ghostState5}
                 />
               </div>
             </div>
@@ -176,6 +190,7 @@ describe('generate-jss', () => {
 
       const MyComponent = () => {
         const classes = useStyles();
+
         return (
           <div className={classes.wrappert0}>
             <div className={classes.wrappert1}>

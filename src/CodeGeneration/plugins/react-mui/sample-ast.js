@@ -48,6 +48,7 @@ export const hasGhosts = {
           ghosts: [
             { id: 3, type: BUTTON_GHOST },
             { id: 4, type: INPUT_FIELD_GHOST },
+            { id: 5, type: INPUT_FIELD_GHOST },
           ],
         },
       ],
