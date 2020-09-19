@@ -104,6 +104,7 @@ class Tree {
 
   setSegments(newSegments) {
     if (newSegments < 1) return;
+    this.ghosts = [];
     this.createSegments(newSegments);
   }
 
