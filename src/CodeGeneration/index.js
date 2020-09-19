@@ -127,6 +127,8 @@ const CodeGeneration = () => {
     FileSaver.saveAs(content, 'code.zip');
   };
 
+  const onCopyToClipboard = () => navigator.clipboard.writeText(code);
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.mainWrapper}>
@@ -140,6 +142,9 @@ const CodeGeneration = () => {
         </SyntaxHighlighter>
       </div>
       <Paper className={classes.drawerWrapper}>
+        <Button style={{ width: '100%' }} variant="outlined" color="primary" onClick={onCopyToClipboard}>
+          Copy to Clipboard
+        </Button>
         <Button style={{ width: '100%' }} variant="outlined" color="primary" onClick={onDownload}>
           Download ZIP
         </Button>
