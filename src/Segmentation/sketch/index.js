@@ -28,7 +28,6 @@ const sketch = (p) => {
       p.textSize(24);
       p.textAlign(p.CENTER);
       p.text('Drag an image file onto the canvas.', p.width / 2, p.height / 2);
-      p.text('Reload the page if the image disappears.', p.width / 2, p.height / 2 + 50);
     } else {
       p.image(img, 0, 0, p.width, p.height);
     }
@@ -60,13 +59,16 @@ const sketch = (p) => {
     // If it's an image file
     if (file.type === 'image') {
       // Create an image DOM element but don't show it
-      img = p.createImg(file.data).hide();
-      const aspect = img.width / img.height;
-      const newHeight = p.width / aspect;
-      p.resizeCanvas(p.width, newHeight);
-      TreeRenderer.initialize(p);
-      // Draw the image onto the canvas
-      // p.image(img, 0, 0, p.width, p.height);
+      p.createImg(file.data, '', (newImage) => {
+        img = newImage;
+        img.hide();
+        const aspect = img.width / img.height;
+        const newHeight = p.width / aspect;
+        p.resizeCanvas(p.width, newHeight || p.height);
+        TreeRenderer.initialize(p);
+        // Draw the image onto the canvas
+        // p.image(img, 0, 0, p.width, p.height);
+      });
     } else {
       console.log('Not an image file!');
     }
