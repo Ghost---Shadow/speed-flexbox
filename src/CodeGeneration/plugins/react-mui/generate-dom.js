@@ -1,15 +1,31 @@
 import { BUTTON_GHOST, INPUT_FIELD_GHOST, LABEL_GHOST } from '../../../constants/types';
 import { generateClassName, generateGhostClassName, generateGhostPropName } from './utils';
 
-const labelGhostFormatter = (ghost) => `
-<div className={classes.${generateGhostClassName(ghost)}}>
-  {${generateGhostPropName(ghost)}}
-</div>`;
+const labelGhostFormatter = (ghost) => {
+  const className = generateGhostClassName(ghost);
+  const textProp = generateGhostPropName(ghost);
+
+  return `
+  <div className={classes.${className}}>
+    {${textProp}}
+  </div>`;
+};
+
+const buttonGhostFormatter = (ghost) => {
+  const className = generateGhostClassName(ghost);
+  const onClickProp = generateGhostPropName(ghost);
+
+  return `
+  <button type="button" className={classes.${className}} onClick={${onClickProp}}>
+    Button ${ghost.id}
+  </button>
+  `;
+};
 
 const generate = (ast) => {
   const ghostFormatterLookup = {
     [LABEL_GHOST]: labelGhostFormatter,
-    [BUTTON_GHOST]: () => 'TODO',
+    [BUTTON_GHOST]: buttonGhostFormatter,
     [INPUT_FIELD_GHOST]: () => 'TODO',
   };
 

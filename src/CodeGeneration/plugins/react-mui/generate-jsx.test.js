@@ -93,7 +93,12 @@ describe('generate-jss', () => {
             <div className={classes.wrappert2}>
               <div className={classes.wrappert21}>.</div>
 
-              <div className={classes.wrappert22}>TODOTODO</div>
+              <div className={classes.wrappert22}>
+                <button type=\\"button\\" className={classes.ghost3} onClick={prop3}>
+                  Button 3
+                </button>
+                TODO
+              </div>
             </div>
           </div>
         );
