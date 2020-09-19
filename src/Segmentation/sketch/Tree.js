@@ -2,6 +2,7 @@ import {
   interp1D, isPointInAabb, vec2, findDistance1D, argmMin, clamp, cumulativeSum,
 } from './utils';
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
+import { BUTTON_GHOST, INPUT_FIELD_GHOST, LABEL_GHOST } from '../../constants/types';
 
 class Tree {
   // Counter for generated tree nodes
@@ -120,6 +121,24 @@ class Tree {
     }
     p.rect(this.start.x, this.start.y, width, height);
     this.children.forEach((child) => child.draw(p, active));
+    this.drawGhosts(p);
+  }
+
+  drawGhosts(p) {
+    const fontSize = Math.min(14, this.end.y - this.start.y - 2); // px
+    const x = (this.start.x + this.end.x) / 2;
+    const y = (this.start.y + this.end.y) / 2;
+
+    const typeToIconLut = {
+      [LABEL_GHOST]: 'L',
+      [BUTTON_GHOST]: 'B',
+      [INPUT_FIELD_GHOST]: 'I',
+    };
+
+    const icons = this.ghosts.map((g) => `${typeToIconLut[g.type]}${g.id}`);
+
+    p.textSize(fontSize);
+    p.text(icons.join(','), x, y);
   }
 
   shouldBeActive(x, y) {
@@ -162,6 +181,7 @@ class Tree {
       flex,
       direction: this.direction,
       children: this.children.map((c) => c.toJson()),
+      ghosts: this.ghosts,
     };
   }
 
@@ -176,6 +196,7 @@ class Tree {
     this.children.forEach((child, i) => {
       child.fromJson(ast.children[i]);
     });
+    this.ghosts = ast.ghosts;
   }
 }
 
