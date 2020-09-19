@@ -1,69 +1,11 @@
 import prettier from 'prettier';
 
 import generate from './generate-jsx';
-import {
-  DIRECTION_ROW,
-  DIRECTION_COLUMN,
-} from '../../../Segmentation/sketch/constants';
-import { LABEL_GHOST } from '../../../constants/types';
+import { hasGhosts, noGhosts } from './sample-ast';
 
 describe('generate-jss', () => {
   it('should generate JSS from ast', () => {
-    const ast = {
-      id: 't0',
-      direction: DIRECTION_ROW,
-      flex: 1,
-      children: [
-        {
-          id: 't1',
-          direction: DIRECTION_ROW,
-          flex: 0.25,
-          children: [
-            {
-              id: 't11',
-              flex: 0.25,
-              direction: DIRECTION_COLUMN,
-              children: [],
-              ghosts: [{ id: 1, type: LABEL_GHOST }],
-            },
-            {
-              id: 't12',
-              flex: 0.75,
-              direction: DIRECTION_COLUMN,
-              children: [],
-              ghosts: [],
-            },
-          ],
-          ghosts: [],
-        },
-        {
-          id: 't2',
-          direction: DIRECTION_COLUMN,
-          flex: 0.75,
-          children: [
-            {
-              id: 't21',
-              flex: 0.5,
-              direction: DIRECTION_COLUMN,
-              children: [],
-              ghosts: [],
-            },
-            {
-              id: 't22',
-              flex: 0.5,
-              direction: DIRECTION_COLUMN,
-              children: [],
-              ghosts: [
-                { id: 2, type: LABEL_GHOST },
-                { id: 3, type: LABEL_GHOST },
-              ],
-            },
-          ],
-          ghosts: [],
-        },
-      ],
-      ghosts: [],
-    };
+    const ast = hasGhosts;
     const code = generate(ast);
     const prettyCode = prettier.format(code, {
       parser: 'babel',
@@ -159,6 +101,85 @@ describe('generate-jss', () => {
         prop2: PropTypes.string.isRequired,
         prop3: PropTypes.string.isRequired,
       };
+
+      export default MyComponent;
+      "
+    `);
+  });
+
+  it('should generate JSS from ast', () => {
+    const ast = noGhosts;
+    const code = generate(ast);
+    const prettyCode = prettier.format(code, {
+      parser: 'babel',
+      singleQuote: true,
+    });
+    expect(prettyCode).toMatchInlineSnapshot(`
+      "import React from 'react';
+      import PropTypes from 'prop-types';
+
+      import makeStyles from '@material-ui/core/styles/makeStyles';
+
+      import './debug.css'; // For debugging
+
+      const useStyles = makeStyles({
+        wrappert0: {
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 1,
+        },
+        wrappert1: {
+          display: 'flex',
+          flexDirection: 'row',
+          flex: 0.25,
+        },
+        wrappert11: {
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 0.25,
+        },
+        wrappert12: {
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 0.75,
+        },
+        wrappert2: {
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 0.75,
+        },
+        wrappert21: {
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 0.5,
+        },
+        wrappert22: {
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 0.5,
+        },
+      });
+
+      const MyComponent = () => {
+        const classes = useStyles();
+        return (
+          <div className={classes.wrappert0}>
+            <div className={classes.wrappert1}>
+              <div className={classes.wrappert11}>.</div>
+
+              <div className={classes.wrappert12}>.</div>
+            </div>
+
+            <div className={classes.wrappert2}>
+              <div className={classes.wrappert21}>.</div>
+
+              <div className={classes.wrappert22}>.</div>
+            </div>
+          </div>
+        );
+      };
+
+      MyComponent.propTypes = {};
 
       export default MyComponent;
       "
