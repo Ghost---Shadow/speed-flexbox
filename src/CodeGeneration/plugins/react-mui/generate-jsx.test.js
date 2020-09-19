@@ -130,8 +130,8 @@ describe('generate-jss', () => {
         },
       });
 
-      const MyComponent = (props) => {
-        const classes = useStyles(props);
+      const MyComponent = ({ prop1, prop2, prop3 }) => {
+        const classes = useStyles({ prop1, prop2, prop3 });
         return (
           <div className={classes.wrappert0}>
             <div className={classes.wrappert1}>
