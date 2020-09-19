@@ -1,4 +1,4 @@
-import { LABEL_GHOST } from '../../../constants/types';
+import { BUTTON_GHOST, INPUT_FIELD_GHOST, LABEL_GHOST } from '../../../constants/types';
 import { DIRECTION_COLUMN, DIRECTION_ROW } from '../../../Segmentation/sketch/constants';
 
 export const hasGhosts = {
@@ -16,7 +16,7 @@ export const hasGhosts = {
           flex: 0.25,
           direction: DIRECTION_COLUMN,
           children: [],
-          ghosts: [{ id: 1, type: LABEL_GHOST }],
+          ghosts: [{ id: 1, type: LABEL_GHOST }, { id: 2, type: LABEL_GHOST }],
         },
         {
           id: 't12',
@@ -46,8 +46,8 @@ export const hasGhosts = {
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [
-            { id: 2, type: LABEL_GHOST },
-            { id: 3, type: LABEL_GHOST },
+            { id: 3, type: BUTTON_GHOST },
+            { id: 4, type: INPUT_FIELD_GHOST },
           ],
         },
       ],

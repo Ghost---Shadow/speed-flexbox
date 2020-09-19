@@ -15,7 +15,8 @@ describe('generate-props', () => {
       "foo = {
         prop1: PropTypes.string.isRequired,
         prop2: PropTypes.string.isRequired,
-        prop3: PropTypes.string.isRequired,
+        TODO,
+        TODO,
       };
       "
     `);

@@ -33,6 +33,11 @@ describe('generate-jss', () => {
           alignItems: 'center',
           justifyContent: 'center',
         },
+        ghost2: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
         wrappert12: {
           display: 'flex',
           flexDirection: 'column',
@@ -53,12 +58,12 @@ describe('generate-jss', () => {
           flexDirection: 'column',
           flex: 0.5,
         },
-        ghost2: {
+        ghost3: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost3: {
+        ghost4: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',

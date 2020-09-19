@@ -16,6 +16,7 @@ describe('generate-dom', () => {
         <div className={classes.wrappert1}>
           <div className={classes.wrappert11}>
             <div className={classes.ghost1}>{prop1}</div>
+            <div className={classes.ghost2}>{prop2}</div>
           </div>
 
           <div className={classes.wrappert12}>.</div>
@@ -24,10 +25,7 @@ describe('generate-dom', () => {
         <div className={classes.wrappert2}>
           <div className={classes.wrappert21}>.</div>
 
-          <div className={classes.wrappert22}>
-            <div className={classes.ghost2}>{prop2}</div>
-            <div className={classes.ghost3}>{prop3}</div>
-          </div>
+          <div className={classes.wrappert22}>TODOTODO</div>
         </div>
       </div>;
       "

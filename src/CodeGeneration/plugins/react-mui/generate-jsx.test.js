@@ -40,6 +40,11 @@ describe('generate-jss', () => {
           alignItems: 'center',
           justifyContent: 'center',
         },
+        ghost2: {
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+        },
         wrappert12: {
           display: 'flex',
           flexDirection: 'column',
@@ -60,25 +65,26 @@ describe('generate-jss', () => {
           flexDirection: 'column',
           flex: 0.5,
         },
-        ghost2: {
+        ghost3: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost3: {
+        ghost4: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
       });
 
-      const MyComponent = ({ prop1, prop2, prop3 }) => {
-        const classes = useStyles({ prop1, prop2, prop3 });
+      const MyComponent = ({ prop1, prop2, prop3, prop4 }) => {
+        const classes = useStyles({ prop1, prop2, prop3, prop4 });
         return (
           <div className={classes.wrappert0}>
             <div className={classes.wrappert1}>
               <div className={classes.wrappert11}>
                 <div className={classes.ghost1}>{prop1}</div>
+                <div className={classes.ghost2}>{prop2}</div>
               </div>
 
               <div className={classes.wrappert12}>.</div>
@@ -87,10 +93,7 @@ describe('generate-jss', () => {
             <div className={classes.wrappert2}>
               <div className={classes.wrappert21}>.</div>
 
-              <div className={classes.wrappert22}>
-                <div className={classes.ghost2}>{prop2}</div>
-                <div className={classes.ghost3}>{prop3}</div>
-              </div>
+              <div className={classes.wrappert22}>TODOTODO</div>
             </div>
           </div>
         );
@@ -99,7 +102,8 @@ describe('generate-jss', () => {
       MyComponent.propTypes = {
         prop1: PropTypes.string.isRequired,
         prop2: PropTypes.string.isRequired,
-        prop3: PropTypes.string.isRequired,
+        TODO,
+        TODO,
       };
 
       export default MyComponent;

@@ -1,4 +1,4 @@
-import { LABEL_GHOST } from '../../../constants/types';
+import { BUTTON_GHOST, INPUT_FIELD_GHOST, LABEL_GHOST } from '../../../constants/types';
 import { generateClassName, generateGhostClassName, generateGhostPropName } from './utils';
 
 const labelGhostFormatter = (ghost) => `
@@ -9,6 +9,8 @@ const labelGhostFormatter = (ghost) => `
 const generate = (ast) => {
   const ghostFormatterLookup = {
     [LABEL_GHOST]: labelGhostFormatter,
+    [BUTTON_GHOST]: () => 'TODO',
+    [INPUT_FIELD_GHOST]: () => 'TODO',
   };
 
   const ghostDoms = ast.ghosts.map((ghost) => ghostFormatterLookup[ghost.type](ghost));
