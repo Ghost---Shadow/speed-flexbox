@@ -1,7 +1,7 @@
 import { generateGhostPropName } from './utils';
 
 const generateHelper = (ast) => {
-  const ghostPropArr = ast.ghosts.map(generateGhostPropName);
+  const ghostPropArr = ast.ghosts.map(generateGhostPropName).filter((g) => g);
   const childStringArr = ast.children
     .map((childAst) => generateHelper(childAst))
     .reduce((acc, next) => acc.concat(next), []);

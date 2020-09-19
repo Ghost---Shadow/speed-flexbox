@@ -77,8 +77,8 @@ describe('generate-jss', () => {
         },
       });
 
-      const MyComponent = ({ prop1, prop2, prop3, prop4 }) => {
-        const classes = useStyles({ prop1, prop2, prop3, prop4 });
+      const MyComponent = ({ prop1, prop2, prop3 }) => {
+        const classes = useStyles({ prop1, prop2, prop3 });
         return (
           <div className={classes.wrappert0}>
             <div className={classes.wrappert1}>
@@ -97,7 +97,13 @@ describe('generate-jss', () => {
                 <button type=\\"button\\" className={classes.ghost3} onClick={prop3}>
                   Button 3
                 </button>
-                TODO
+
+                <input
+                  type=\\"text\\"
+                  className={classes.ghost4}
+                  onChange={() => 'TODO'}
+                  value=\\"TODO\\"
+                />
               </div>
             </div>
           </div>
@@ -108,7 +114,6 @@ describe('generate-jss', () => {
         prop1: PropTypes.string.isRequired,
         prop2: PropTypes.string.isRequired,
         prop3: PropTypes.func.isRequired,
-        TODO: PropTypes.string.isRequired,
       };
 
       export default MyComponent;

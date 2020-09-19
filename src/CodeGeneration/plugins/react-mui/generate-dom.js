@@ -22,11 +22,19 @@ const buttonGhostFormatter = (ghost) => {
   `;
 };
 
+const inputFieldGhostFormatter = (ghost) => {
+  const className = generateGhostClassName(ghost);
+
+  return `
+  <input type="text" className={classes.${className}} onChange={() => 'TODO'} value="TODO" />
+  `;
+};
+
 const generate = (ast) => {
   const ghostFormatterLookup = {
     [LABEL_GHOST]: labelGhostFormatter,
     [BUTTON_GHOST]: buttonGhostFormatter,
-    [INPUT_FIELD_GHOST]: () => 'TODO',
+    [INPUT_FIELD_GHOST]: inputFieldGhostFormatter,
   };
 
   const ghostDoms = ast.ghosts.map((ghost) => ghostFormatterLookup[ghost.type](ghost));

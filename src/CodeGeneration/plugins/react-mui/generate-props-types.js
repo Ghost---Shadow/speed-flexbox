@@ -17,10 +17,12 @@ const generateHelper = (ast) => {
   const ghostFormatterLookup = {
     [LABEL_GHOST]: labelGhostFormatter,
     [BUTTON_GHOST]: buttonGhostFormatter,
-    [INPUT_FIELD_GHOST]: () => 'TODO: PropTypes.string.isRequired',
+    [INPUT_FIELD_GHOST]: () => null,
   };
 
-  const ghostPropArr = ast.ghosts.map((ghost) => ghostFormatterLookup[ghost.type](ghost));
+  const ghostPropArr = ast.ghosts
+    .map((ghost) => ghostFormatterLookup[ghost.type](ghost))
+    .filter((g) => g);
   const childStringArr = ast.children
     .map((childAst) => generateHelper(childAst))
     .reduce((acc, next) => acc.concat(next), []);

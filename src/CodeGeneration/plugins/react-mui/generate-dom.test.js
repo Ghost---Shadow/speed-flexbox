@@ -29,7 +29,13 @@ describe('generate-dom', () => {
             <button type=\\"button\\" className={classes.ghost3} onClick={prop3}>
               Button 3
             </button>
-            TODO
+
+            <input
+              type=\\"text\\"
+              className={classes.ghost4}
+              onChange={() => 'TODO'}
+              value=\\"TODO\\"
+            />
           </div>
         </div>
       </div>;

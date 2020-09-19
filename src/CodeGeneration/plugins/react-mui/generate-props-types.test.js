@@ -1,14 +1,14 @@
-import prettier from "prettier";
+import prettier from 'prettier';
 
-import generate from "./generate-props-types";
-import { hasGhosts, noGhosts } from "./sample-ast";
+import generate from './generate-props-types';
+import { hasGhosts, noGhosts } from './sample-ast';
 
-describe("generate-props", () => {
-  it("should generate props from ast", () => {
+describe('generate-props', () => {
+  it('should generate props from ast', () => {
     const ast = hasGhosts;
     const code = `foo = {${generate(ast)}}`;
     const prettyCode = prettier.format(code, {
-      parser: "babel",
+      parser: 'babel',
       singleQuote: true,
     });
     expect(prettyCode).toMatchInlineSnapshot(`
@@ -16,16 +16,15 @@ describe("generate-props", () => {
         prop1: PropTypes.string.isRequired,
         prop2: PropTypes.string.isRequired,
         prop3: PropTypes.func.isRequired,
-        TODO: PropTypes.string.isRequired,
       };
       "
     `);
   });
-  it("should not crash if no ghosts", () => {
+  it('should not crash if no ghosts', () => {
     const ast = noGhosts;
     const code = `${generate(ast)}`;
     const prettyCode = prettier.format(code, {
-      parser: "babel",
+      parser: 'babel',
       singleQuote: true,
     });
     expect(prettyCode).toMatchInlineSnapshot('""');
