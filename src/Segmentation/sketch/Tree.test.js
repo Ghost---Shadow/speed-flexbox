@@ -216,14 +216,17 @@ describe('Tree', () => {
                 flex: 0.25,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
               {
                 id: 't12',
                 flex: 0.75,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
             ],
+            ghosts: [],
           },
           {
             id: 't2',
@@ -235,16 +238,20 @@ describe('Tree', () => {
                 flex: 0.5,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
               {
                 id: 't22',
                 flex: 0.5,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
             ],
+            ghosts: [],
           },
         ],
+        ghosts: [],
       };
 
       expect(t0.toJson()).toEqual(expected);
@@ -290,14 +297,17 @@ describe('Tree', () => {
                 flex: 0.25,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
               {
                 id: 't12',
                 flex: 0.75,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
             ],
+            ghosts: [],
           },
           {
             id: 't2',
@@ -309,16 +319,20 @@ describe('Tree', () => {
                 flex: 0.5,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
               {
                 id: 't22',
                 flex: 0.5,
                 direction: DIRECTION_COLUMN,
                 children: [],
+                ghosts: [],
               },
             ],
+            ghosts: [],
           },
         ],
+        ghosts: [],
       };
 
       const newT0 = new Tree(vec2(0, 0), vec2(4, 2), DIRECTION_COLUMN, null, 1);
