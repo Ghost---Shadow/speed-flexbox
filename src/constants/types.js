@@ -1,0 +1,3 @@
+export const LABEL_GHOST = 'LABEL_GHOST';
+export const BUTTON_GHOST = 'BUTTON_GHOST';
+export const INPUT_FIELD_GHOST = 'INPUT_FIELD_GHOST';

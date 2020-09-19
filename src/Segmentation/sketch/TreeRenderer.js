@@ -66,6 +66,16 @@ class TreeRenderer {
     TreeRenderer.active.pickSegment(TreeRenderer.p);
   };
 
+  static popGhost = () => {
+    if (!TreeRenderer.active) return;
+    TreeRenderer.active.popGhost();
+  }
+
+  static pushGhost = (type) => () => {
+    if (!TreeRenderer.active) return;
+    TreeRenderer.active.pushGhost(type);
+  }
+
   static dumpAst = (writeLocalStorage = false) => {
     if (!TreeRenderer.root) {
       return {

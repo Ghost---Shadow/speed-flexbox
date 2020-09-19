@@ -7,6 +7,9 @@ class Tree {
   // Counter for generated tree nodes
   static id = 0;
 
+  // Counter for generated ghosts
+  static ghostId = 0;
+
   // Min distance between segments/AKA min size of child
   static PADDING = 10;
 
@@ -16,6 +19,7 @@ class Tree {
     this.direction = direction;
     this.parent = parent;
     this.children = [];
+    this.ghosts = [];
     this.id = Tree.id;
     this.depth = parent ? parent.depth + 1 : 0;
     Tree.id += 1;
@@ -131,6 +135,17 @@ class Tree {
       .filter((p) => p);
 
     return candidates[0];
+  }
+
+  popGhost() {
+    this.ghosts.pop();
+  }
+
+  pushGhost(type) {
+    if (!this.children.length) {
+      Tree.ghostId += 1;
+      this.ghosts.push({ id: Tree.ghostId, type });
+    }
   }
 
   toJson() {

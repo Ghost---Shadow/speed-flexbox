@@ -1,3 +1,4 @@
+import { LABEL_GHOST } from '../../constants/types';
 import TreeRenderer from './TreeRenderer';
 
 /* eslint-disable no-param-reassign */
@@ -46,11 +47,16 @@ const sketch = (p) => {
   p.keyReleased = () => {
     const noop = () => null;
     const functionToInvoke = {
+      // Segmentation
       87: TreeRenderer.selectActivesParent, // W: Go up one parent
       83: TreeRenderer.selectActive, // S: Select child on cursor
       68: TreeRenderer.incrementSegments, // D: Increase subdivision
       65: TreeRenderer.decrementSegments, // A: Decrease subdivision
       82: TreeRenderer.toggleDirection, // R: Switch direction
+
+      // Ghosts
+      81: TreeRenderer.popGhost, // Q: Pop Ghost
+      69: TreeRenderer.pushGhost(LABEL_GHOST), // E: Push Label Ghost
     }[p.keyCode] || noop;
     functionToInvoke();
   };

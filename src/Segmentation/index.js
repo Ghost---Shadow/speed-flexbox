@@ -36,11 +36,17 @@ const Controls = () => {
   return (
     <div className={classes.controls}>
       <Typography>Controls</Typography>
+      <Divider />
       <Typography>W: Go up one parent</Typography>
       <Typography>S: Select child on cursor</Typography>
       <Typography>D: Increase subdivision</Typography>
       <Typography>A: Decrease subdivision</Typography>
       <Typography>R: Switch direction</Typography>
+      <Divider />
+      <Typography>Ghosts</Typography>
+      <Divider />
+      <Typography>Q: Pop Ghost</Typography>
+      <Typography>E: Push Label Ghost</Typography>
     </div>
   );
 };
