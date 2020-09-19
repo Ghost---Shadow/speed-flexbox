@@ -1,4 +1,4 @@
-import { LABEL_GHOST } from '../../constants/types';
+import { BUTTON_GHOST, INPUT_FIELD_GHOST, LABEL_GHOST } from '../../constants/types';
 import TreeRenderer from './TreeRenderer';
 
 /* eslint-disable no-param-reassign */
@@ -56,7 +56,9 @@ const sketch = (p) => {
 
       // Ghosts
       81: TreeRenderer.popGhost, // Q: Pop Ghost
-      69: TreeRenderer.pushGhost(LABEL_GHOST), // E: Push Label Ghost
+      49: TreeRenderer.pushGhost(LABEL_GHOST), // 1: Push Label Ghost
+      50: TreeRenderer.pushGhost(BUTTON_GHOST), // 2: Push Button Ghost
+      51: TreeRenderer.pushGhost(INPUT_FIELD_GHOST), // 3: Push Input Field Ghost
     }[p.keyCode] || noop;
     functionToInvoke();
   };

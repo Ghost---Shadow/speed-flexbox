@@ -46,7 +46,9 @@ const Controls = () => {
       <Typography>Ghosts</Typography>
       <Divider />
       <Typography>Q: Pop Ghost</Typography>
-      <Typography>E: Push Label Ghost</Typography>
+      <Typography>1: Push Label Ghost</Typography>
+      <Typography>2: Push Button Ghost</Typography>
+      <Typography>3: Push Input Field Ghost</Typography>
     </div>
   );
 };
