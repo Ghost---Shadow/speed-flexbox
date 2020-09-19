@@ -10,7 +10,6 @@ import Box from '@material-ui/core/Box';
 
 import Segmentation from './Segmentation';
 import TreeRenderer from './Segmentation/sketch/TreeRenderer';
-import PostProcessing from './PostProcessing';
 import CodeGeneration from './CodeGeneration';
 
 function TabPanel(props) {
@@ -68,7 +67,7 @@ const App = () => {
     setTab(newValue);
   };
 
-  const tabLabels = ['Segmentation', 'Post Processing', 'Code Generation'];
+  const tabLabels = ['Segmentation', 'Code Generation'];
 
   const tabs = tabLabels.map((label) => (
     <Tab label={label} key={label} id={label} aria-controls={label} />
@@ -86,9 +85,6 @@ const App = () => {
           <Segmentation />
         </TabPanel>
         <TabPanel value={tab} index={1}>
-          <PostProcessing />
-        </TabPanel>
-        <TabPanel value={tab} index={2}>
           <CodeGeneration />
         </TabPanel>
       </div>
