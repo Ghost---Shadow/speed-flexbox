@@ -71,7 +71,7 @@ describe('generate-jss', () => {
     });
     expect(prettyCode).toMatchInlineSnapshot(`
       "import React from 'react';
-      // import PropTypes from 'prop-types';
+      import PropTypes from 'prop-types';
 
       import makeStyles from '@material-ui/core/styles/makeStyles';
 
@@ -155,7 +155,9 @@ describe('generate-jss', () => {
       };
 
       MyComponent.propTypes = {
-        // TODO
+        prop1: PropTypes.string.isRequired,
+        prop2: PropTypes.string.isRequired,
+        prop3: PropTypes.string.isRequired,
       };
 
       export default MyComponent;

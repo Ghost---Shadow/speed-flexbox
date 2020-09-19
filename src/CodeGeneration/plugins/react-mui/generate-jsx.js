@@ -1,15 +1,17 @@
 import generateJss from './generate-jss';
 import generateDom from './generate-dom';
 import generateProps from './generate-props';
+import generatePropsTypes from './generate-props-types';
 
 const generate = (ast) => {
   const jss = generateJss(ast);
   const dom = generateDom(ast);
   const props = generateProps(ast);
+  const propTypes = generatePropsTypes(ast);
 
   const code = `
   import React from 'react';
-  // import PropTypes from 'prop-types';
+  import PropTypes from 'prop-types';
 
   import makeStyles from '@material-ui/core/styles/makeStyles';
 
@@ -25,7 +27,7 @@ const generate = (ast) => {
   }
 
   MyComponent.propTypes = {
-    // TODO
+    ${propTypes}
   }
 
   export default MyComponent;
