@@ -15,7 +15,7 @@ const generate = (ast) => {
 
   import makeStyles from '@material-ui/core/styles/makeStyles';
 
-  import './debug.css'; // For debugging
+  // import './debug.css'; // For debugging
 
   const useStyles = makeStyles(${jss});
 

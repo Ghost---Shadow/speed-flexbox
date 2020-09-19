@@ -1,5 +1,10 @@
 import { BUTTON_GHOST, INPUT_FIELD_GHOST, LABEL_GHOST } from '../../../constants/types';
-import { generateClassName, generateGhostClassName, generateGhostPropName } from './utils';
+import {
+  generateClassName,
+  generateGhostClassName,
+  generateGhostPropName,
+  generateGhostState,
+} from './utils';
 
 const labelGhostFormatter = (ghost) => {
   const className = generateGhostClassName(ghost);
@@ -24,9 +29,15 @@ const buttonGhostFormatter = (ghost) => {
 
 const inputFieldGhostFormatter = (ghost) => {
   const className = generateGhostClassName(ghost);
+  const { value, setter } = generateGhostState(ghost);
 
   return `
-  <input type="text" className={classes.${className}} onChange={() => 'TODO'} value="TODO" />
+    <input 
+      type="text"
+      className={classes.${className}} 
+      onChange={(e) => ${setter}(e.target.value)} 
+      value={${value}} 
+    />
   `;
 };
 

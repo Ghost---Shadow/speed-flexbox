@@ -33,8 +33,8 @@ describe('generate-dom', () => {
             <input
               type=\\"text\\"
               className={classes.ghost4}
-              onChange={() => 'TODO'}
-              value=\\"TODO\\"
+              onChange={(e) => setGhostState4(e.target.value)}
+              value={ghostState4}
             />
           </div>
         </div>

@@ -17,7 +17,7 @@ describe('generate-jss', () => {
 
       import makeStyles from '@material-ui/core/styles/makeStyles';
 
-      import './debug.css'; // For debugging
+      // import './debug.css'; // For debugging
 
       const useStyles = makeStyles({
         wrappert0: {
@@ -101,8 +101,8 @@ describe('generate-jss', () => {
                 <input
                   type=\\"text\\"
                   className={classes.ghost4}
-                  onChange={() => 'TODO'}
-                  value=\\"TODO\\"
+                  onChange={(e) => setGhostState4(e.target.value)}
+                  value={ghostState4}
                 />
               </div>
             </div>
@@ -134,7 +134,7 @@ describe('generate-jss', () => {
 
       import makeStyles from '@material-ui/core/styles/makeStyles';
 
-      import './debug.css'; // For debugging
+      // import './debug.css'; // For debugging
 
       const useStyles = makeStyles({
         wrappert0: {
