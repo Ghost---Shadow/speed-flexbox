@@ -72,8 +72,9 @@ const sketch = (p) => {
         img.hide();
         const aspect = img.width / img.height;
         const newHeight = p.width / aspect;
+        const scaleFactor = p.width / img.width;
         p.resizeCanvas(p.width, newHeight || p.height);
-        TreeRenderer.initialize(p);
+        TreeRenderer.initialize(p, scaleFactor);
         // Draw the image onto the canvas
         // p.image(img, 0, 0, p.width, p.height);
       });

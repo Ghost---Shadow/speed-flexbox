@@ -10,6 +10,8 @@ export const hasGhosts = {
       id: 1,
       direction: DIRECTION_ROW,
       flex: 0.25,
+      width: 100,
+      height: 100,
       children: [
         {
           id: 11,
@@ -17,6 +19,8 @@ export const hasGhosts = {
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [{ id: 1, type: LABEL_GHOST }, { id: 2, type: LABEL_GHOST }],
+          width: 100,
+          height: 100,
         },
         {
           id: 12,
@@ -24,6 +28,8 @@ export const hasGhosts = {
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [],
+          width: 100,
+          height: 100,
         },
       ],
       ghosts: [],
@@ -32,6 +38,8 @@ export const hasGhosts = {
       id: 2,
       direction: DIRECTION_COLUMN,
       flex: 0.75,
+      width: 100,
+      height: 100,
       children: [
         {
           id: 21,
@@ -39,6 +47,8 @@ export const hasGhosts = {
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [],
+          width: 100,
+          height: 100,
         },
         {
           id: 22,
@@ -50,23 +60,32 @@ export const hasGhosts = {
             { id: 4, type: INPUT_FIELD_GHOST },
             { id: 5, type: INPUT_FIELD_GHOST },
           ],
+          width: 100,
+          height: 100,
         },
       ],
       ghosts: [],
     },
   ],
   ghosts: [],
+  width: 100,
+  height: 100,
+  isRoot: true,
 };
 
 export const noGhosts = {
   id: 0,
   direction: DIRECTION_ROW,
   flex: 1,
+  width: 100,
+  height: 100,
   children: [
     {
       id: 1,
       direction: DIRECTION_ROW,
       flex: 0.25,
+      width: 100,
+      height: 100,
       children: [
         {
           id: 11,
@@ -74,6 +93,8 @@ export const noGhosts = {
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [],
+          width: 100,
+          height: 100,
         },
         {
           id: 12,
@@ -81,6 +102,8 @@ export const noGhosts = {
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [],
+          width: 100,
+          height: 100,
         },
       ],
       ghosts: [],
@@ -89,11 +112,15 @@ export const noGhosts = {
       id: 2,
       direction: DIRECTION_COLUMN,
       flex: 0.75,
+      width: 100,
+      height: 100,
       children: [
         {
           id: 21,
           flex: 0.5,
           direction: DIRECTION_COLUMN,
+          width: 100,
+          height: 100,
           children: [],
           ghosts: [],
         },
@@ -101,6 +128,8 @@ export const noGhosts = {
           id: 22,
           flex: 0.5,
           direction: DIRECTION_COLUMN,
+          width: 100,
+          height: 100,
           children: [],
           ghosts: [],
         },

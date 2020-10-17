@@ -1,5 +1,7 @@
 import { BUTTON_GHOST } from '../../../constants/types';
-import { generateClassName, generateGhostClassName, round } from './utils';
+import {
+  generateClassName, generateGhostClassName, round, toRem,
+} from './utils';
 
 const buttonGhostFormatter = (ghost) => {
   const name = generateGhostClassName(ghost);
@@ -30,6 +32,14 @@ const ghostFormatter = (ghost) => {
   return formatter(ghost);
 };
 
+const rootNodeDimensions = (ast) => {
+  if (!ast.isRoot || !ast.width || !ast.height) return '';
+
+  return `minWidth: '${round(toRem(ast.width))}rem',
+    minHeight: '${round(toRem(ast.height))}rem',
+  `;
+};
+
 const generateHelper = (ast) => {
   const name = generateClassName(ast);
   const self = `
@@ -37,6 +47,7 @@ const generateHelper = (ast) => {
       display: 'flex',
       flexDirection: '${ast.direction}',
       flex: ${round(ast.flex)},
+      ${rootNodeDimensions(ast)}
     }
   `;
 

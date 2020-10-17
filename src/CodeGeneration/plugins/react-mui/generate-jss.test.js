@@ -17,6 +17,8 @@ describe('generate-jss', () => {
           display: 'flex',
           flexDirection: 'row',
           flex: 1,
+          minWidth: '6.25rem',
+          minHeight: '6.25rem',
         },
         wrapper01: {
           display: 'flex',

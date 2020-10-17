@@ -11,11 +11,14 @@ class TreeRenderer {
 
   static p = null;
 
-  static initialize = (p) => {
+  static scaleFactor = 1;
+
+  static initialize = (p, scaleFactor) => {
     TreeRenderer.p = p;
     TreeRenderer.root = new Tree(vec2(0, 0), vec2(p.width, p.height), DIRECTION_ROW, null, 2);
     TreeRenderer.loadAst();
     TreeRenderer.active = TreeRenderer.root;
+    TreeRenderer.scaleFactor = scaleFactor;
   };
 
   static mouseDragged = () => {
@@ -84,7 +87,7 @@ class TreeRenderer {
         children: [],
       };
     }
-    const ast = TreeRenderer.root.toJson();
+    const ast = TreeRenderer.root.toJson(TreeRenderer.scaleFactor);
     if (writeLocalStorage) {
       localStorage.setItem('ast', JSON.stringify(ast));
     }

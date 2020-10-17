@@ -168,7 +168,7 @@ class Tree {
     }
   }
 
-  toJson() {
+  toJson(scaleFactor) {
     let flex = 1;
     if (this.parent) {
       const pAxis = this.parent.getMajorAxis();
@@ -180,8 +180,11 @@ class Tree {
       id: this.id,
       flex,
       direction: this.direction,
-      children: this.children.map((c) => c.toJson()),
+      children: this.children.map((c) => c.toJson(scaleFactor)),
       ghosts: this.ghosts,
+      height: (this.end.y - this.start.y) / scaleFactor,
+      width: (this.end.x - this.start.x) / scaleFactor,
+      isRoot: this.parent ? undefined : true,
     };
   }
 

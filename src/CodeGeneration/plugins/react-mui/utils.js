@@ -22,3 +22,6 @@ export const generateGhostState = (ghost) => ({
 }[ghost.type]);
 
 export const round = (num) => Math.round((num + Number.EPSILON) * 100) / 100;
+
+// http://www.standardista.com/px-to-rem-conversion-if-root-font-size-is-16px/
+export const toRem = (px) => px / 16;

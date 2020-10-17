@@ -205,16 +205,25 @@ describe('Tree', () => {
         id: 't0',
         direction: DIRECTION_ROW,
         flex: 1,
+        height: 2,
+        width: 4,
+        isRoot: true,
         children: [
           {
             id: 't1',
             direction: DIRECTION_ROW,
             flex: 0.25,
+            height: 2,
+            width: 1,
+            isRoot: undefined,
             children: [
               {
                 id: 't11',
                 flex: 0.25,
                 direction: DIRECTION_COLUMN,
+                height: 2,
+                width: 0.25,
+                isRoot: undefined,
                 children: [],
                 ghosts: [],
               },
@@ -222,6 +231,9 @@ describe('Tree', () => {
                 id: 't12',
                 flex: 0.75,
                 direction: DIRECTION_COLUMN,
+                height: 2,
+                width: 0.75,
+                isRoot: undefined,
                 children: [],
                 ghosts: [],
               },
@@ -232,11 +244,17 @@ describe('Tree', () => {
             id: 't2',
             direction: DIRECTION_COLUMN,
             flex: 0.75,
+            height: 2,
+            width: 3,
+            isRoot: undefined,
             children: [
               {
                 id: 't21',
                 flex: 0.5,
                 direction: DIRECTION_COLUMN,
+                height: 1,
+                width: 3,
+                isRoot: undefined,
                 children: [],
                 ghosts: [],
               },
@@ -244,6 +262,9 @@ describe('Tree', () => {
                 id: 't22',
                 flex: 0.5,
                 direction: DIRECTION_COLUMN,
+                height: 1,
+                width: 3,
+                isRoot: undefined,
                 children: [],
                 ghosts: [],
               },
@@ -254,7 +275,8 @@ describe('Tree', () => {
         ghosts: [],
       };
 
-      expect(t0.toJson()).toEqual(expected);
+      const scaleFactor = 1;
+      expect(t0.toJson(scaleFactor)).toEqual(expected);
     });
   });
   describe('fromJson', () => {
