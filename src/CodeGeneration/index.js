@@ -100,22 +100,32 @@ PluginSelector.propTypes = {
   setPluginType: PropTypes.func.isRequired,
 };
 
+const LAST_USED_PLUGIN = 'LAST_USED_PLUGIN';
+
 const CodeGeneration = () => {
   const classes = useStyles();
 
   const ast = JSON.parse(localStorage.getItem('ast') || '{"message":"No ast found"}');
 
-  const [pluginType, setPluginType] = useState(availablePlugins[0].value);
+  const lastUsedPlugin = localStorage.getItem(LAST_USED_PLUGIN);
+  const defaultPlugin = availablePlugins[0].value;
+  const [pluginType, setPluginType] = useState(lastUsedPlugin || defaultPlugin);
   const [currentFileIndex, setCurrentFileIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentFileIndex(0);
+    localStorage.setItem(LAST_USED_PLUGIN, pluginType);
+  }, [pluginType]);
+
+  if (!plugins[pluginType]) {
+    setPluginType(defaultPlugin);
+    return <div />;
+  }
 
   const plugin = plugins[pluginType];
   const generation = plugin(ast);
   const fileNames = Object.keys(generation.files);
   const code = generation.files[fileNames[currentFileIndex]] || '';
-
-  useEffect(() => {
-    setCurrentFileIndex(0);
-  }, [pluginType]);
 
   const onDownload = async () => {
     const zip = new Jszip();
