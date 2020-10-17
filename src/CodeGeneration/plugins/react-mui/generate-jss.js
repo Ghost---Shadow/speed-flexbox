@@ -1,6 +1,16 @@
+import { BUTTON_GHOST } from '../../../constants/types';
 import { generateClassName, generateGhostClassName, round } from './utils';
 
-const ghostFormatter = (ghost) => {
+const buttonGhostFormatter = (ghost) => {
+  const name = generateGhostClassName(ghost);
+  return `
+  ${name}:{
+    backgroundColor: 'transparent'
+  }
+`;
+};
+
+const defaultGhostFormatter = (ghost) => {
   const name = generateGhostClassName(ghost);
   return `
   ${name}: {
@@ -10,6 +20,14 @@ const ghostFormatter = (ghost) => {
     justifyContent: 'center',
   }
   `;
+};
+
+const ghostFormatter = (ghost) => {
+  const formatter = {
+    [BUTTON_GHOST]: buttonGhostFormatter,
+  }[ghost.type] || defaultGhostFormatter;
+
+  return formatter(ghost);
 };
 
 const generateHelper = (ast) => {

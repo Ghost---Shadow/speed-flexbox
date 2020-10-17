@@ -61,10 +61,7 @@ describe('generate-jss', () => {
           flex: 0.5,
         },
         ghost03: {
-          flex: 1,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          backgroundColor: 'transparent',
         },
         ghost04: {
           flex: 1,
