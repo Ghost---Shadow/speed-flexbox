@@ -30,11 +30,13 @@ describe('generate-jss', () => {
         },
         ghost01: {
           flex: 1,
+          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         },
         ghost02: {
           flex: 1,
+          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         },
@@ -60,16 +62,19 @@ describe('generate-jss', () => {
         },
         ghost03: {
           flex: 1,
+          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         },
         ghost04: {
           flex: 1,
+          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         },
         ghost05: {
           flex: 1,
+          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         },
