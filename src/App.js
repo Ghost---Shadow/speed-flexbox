@@ -12,6 +12,8 @@ import Segmentation from './Segmentation';
 import TreeRenderer from './Segmentation/sketch/TreeRenderer';
 import CodeGeneration from './CodeGeneration';
 
+import { LOCAL_STORAGE_KEY_AST } from './constants';
+
 function TabPanel(props) {
   const {
     children, value, index,
@@ -62,7 +64,7 @@ const App = () => {
 
   const handleChange = (event, newValue) => {
     const ast = TreeRenderer.dumpAst();
-    localStorage.setItem('ast', JSON.stringify(ast));
+    localStorage.setItem(LOCAL_STORAGE_KEY_AST, JSON.stringify(ast));
     window.history.pushState({}, '', `?tab=${newValue}`);
     setTab(newValue);
   };

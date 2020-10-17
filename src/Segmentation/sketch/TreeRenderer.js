@@ -1,7 +1,8 @@
 import Tree from './Tree';
 
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
-import { vec2 } from './utils';
+import { findHighestId, vec2 } from './utils';
+import { LOCAL_STORAGE_KEY_AST } from '../../constants';
 
 // Abstract class
 class TreeRenderer {
@@ -14,9 +15,11 @@ class TreeRenderer {
   static scaleFactor = 1;
 
   static initialize = (p, scaleFactor) => {
+    Tree.id = 0;
     TreeRenderer.p = p;
     TreeRenderer.root = new Tree(vec2(0, 0), vec2(p.width, p.height), DIRECTION_ROW, null, 2);
     TreeRenderer.loadAst();
+    Tree.id = findHighestId(TreeRenderer.root) + 1;
     TreeRenderer.active = TreeRenderer.root;
     TreeRenderer.scaleFactor = scaleFactor;
   };
@@ -89,16 +92,15 @@ class TreeRenderer {
     }
     const ast = TreeRenderer.root.toJson(TreeRenderer.scaleFactor);
     if (writeLocalStorage) {
-      localStorage.setItem('ast', JSON.stringify(ast));
+      localStorage.setItem(LOCAL_STORAGE_KEY_AST, JSON.stringify(ast));
     }
     return ast;
   }
 
   static loadAst = (ast = null) => {
     if (!TreeRenderer.root) return;
-    Tree.id = 0;
     if (ast === null) {
-      const serialAst = localStorage.getItem('ast');
+      const serialAst = localStorage.getItem(LOCAL_STORAGE_KEY_AST);
       if (serialAst) {
         const validAst = JSON.parse(serialAst);
         TreeRenderer.root.fromJson(validAst);

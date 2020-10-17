@@ -3,6 +3,7 @@ import {
   interp1D,
   isPointInAabb,
   vec2,
+  findHighestId,
 } from './utils';
 import { DIRECTION_ROW, DIRECTION_COLUMN } from './constants';
 
@@ -67,6 +68,19 @@ describe('utils', () => {
       const b = vec2(3, 3);
       const actual = isPointInAabb(p, a, b);
       expect(actual).toBeTruthy();
+    });
+  });
+  describe('findHighestId', () => {
+    it('should work for trees', () => {
+      const ast = {
+        id: 1,
+        children: [
+          { id: 2, children: [{ id: 3, children: [] }] },
+          { id: 5, children: [{ id: 99, children: [] }] },
+        ],
+      };
+      const id = findHighestId(ast);
+      expect(id).toEqual(99);
     });
   });
 });

@@ -11,6 +11,8 @@ import sketch from './sketch';
 import useWindowDimensions from '../useWindowDimensions';
 import TreeRenderer from './sketch/TreeRenderer';
 
+import { LOCAL_STORAGE_KEY_AST } from '../constants';
+
 const useStyles = makeStyles(() => ({
   wrapper: {
     display: 'flex',
@@ -70,7 +72,9 @@ const Segmentation = () => {
   };
 
   const onClear = () => {
-    localStorage.clear('ast');
+    localStorage.removeItem(LOCAL_STORAGE_KEY_AST);
+    const { p, scaleFactor } = TreeRenderer;
+    TreeRenderer.initialize(p, scaleFactor);
   };
 
   return (

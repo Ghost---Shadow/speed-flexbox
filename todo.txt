@@ -1,9 +1,3 @@
-- Bug: Rotate on start
-- Bug: No display: flex on label ghosts
-- Bug: dont flex buttons
-- min width and height for outer wrapper
-- bgcolor of button should be transparent
--------------------------------------------------------
 - auto detect font size for label ghosts
 - image ghost
 -------------------------------------------------------

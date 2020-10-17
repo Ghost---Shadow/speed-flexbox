@@ -19,6 +19,7 @@ import * as Jszip from 'jszip';
 import FileSaver from 'file-saver';
 
 import { availablePlugins, plugins } from './plugins';
+import { LOCAL_STORAGE_KEY_AST, LOCAL_STORAGE_KEY_LAST_USED_PLUGIN } from '../constants';
 
 const useStyles = makeStyles(() => ({
   wrapper: {
@@ -100,12 +101,12 @@ PluginSelector.propTypes = {
   setPluginType: PropTypes.func.isRequired,
 };
 
-const LAST_USED_PLUGIN = 'LAST_USED_PLUGIN';
+const LAST_USED_PLUGIN = LOCAL_STORAGE_KEY_LAST_USED_PLUGIN;
 
 const CodeGeneration = () => {
   const classes = useStyles();
 
-  const ast = JSON.parse(localStorage.getItem('ast') || '{"message":"No ast found"}');
+  const ast = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY_AST) || '{"message":"No ast found"}');
 
   const lastUsedPlugin = localStorage.getItem(LAST_USED_PLUGIN);
   const defaultPlugin = availablePlugins[0].value;

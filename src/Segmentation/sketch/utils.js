@@ -39,3 +39,10 @@ export const cumulativeSum = (arr) => arr.reduce((r, a) => {
   r.push(((r.length && r[r.length - 1]) || 0) + a);
   return r;
 }, []);
+
+export const findHighestId = (tree) => {
+  const selfId = tree.id;
+  const highestChildIds = tree.children.map(findHighestId);
+
+  return Math.max(selfId, ...highestChildIds);
+};
