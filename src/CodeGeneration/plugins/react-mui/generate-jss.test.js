@@ -13,62 +13,62 @@ describe('generate-jss', () => {
     });
     expect(prettyCode).toMatchInlineSnapshot(`
       "const styles = {
-        wrappert0: {
+        wrapper00: {
           display: 'flex',
           flexDirection: 'row',
           flex: 1,
         },
-        wrappert1: {
+        wrapper01: {
           display: 'flex',
           flexDirection: 'row',
           flex: 0.25,
         },
-        wrappert11: {
+        wrapper11: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.25,
         },
-        ghost1: {
+        ghost01: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost2: {
+        ghost02: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        wrappert12: {
+        wrapper12: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.75,
         },
-        wrappert2: {
+        wrapper02: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.75,
         },
-        wrappert21: {
+        wrapper21: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.5,
         },
-        wrappert22: {
+        wrapper22: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.5,
         },
-        ghost3: {
+        ghost03: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost4: {
+        ghost04: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost5: {
+        ghost05: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',

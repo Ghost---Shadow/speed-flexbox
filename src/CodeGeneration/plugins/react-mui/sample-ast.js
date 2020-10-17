@@ -2,24 +2,24 @@ import { BUTTON_GHOST, INPUT_FIELD_GHOST, LABEL_GHOST } from '../../../constants
 import { DIRECTION_COLUMN, DIRECTION_ROW } from '../../../Segmentation/sketch/constants';
 
 export const hasGhosts = {
-  id: 't0',
+  id: 0,
   direction: DIRECTION_ROW,
   flex: 1,
   children: [
     {
-      id: 't1',
+      id: 1,
       direction: DIRECTION_ROW,
       flex: 0.25,
       children: [
         {
-          id: 't11',
+          id: 11,
           flex: 0.25,
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [{ id: 1, type: LABEL_GHOST }, { id: 2, type: LABEL_GHOST }],
         },
         {
-          id: 't12',
+          id: 12,
           flex: 0.75,
           direction: DIRECTION_COLUMN,
           children: [],
@@ -29,19 +29,19 @@ export const hasGhosts = {
       ghosts: [],
     },
     {
-      id: 't2',
+      id: 2,
       direction: DIRECTION_COLUMN,
       flex: 0.75,
       children: [
         {
-          id: 't21',
+          id: 21,
           flex: 0.5,
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [],
         },
         {
-          id: 't22',
+          id: 22,
           flex: 0.5,
           direction: DIRECTION_COLUMN,
           children: [],
@@ -59,24 +59,24 @@ export const hasGhosts = {
 };
 
 export const noGhosts = {
-  id: 't0',
+  id: 0,
   direction: DIRECTION_ROW,
   flex: 1,
   children: [
     {
-      id: 't1',
+      id: 1,
       direction: DIRECTION_ROW,
       flex: 0.25,
       children: [
         {
-          id: 't11',
+          id: 11,
           flex: 0.25,
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [],
         },
         {
-          id: 't12',
+          id: 12,
           flex: 0.75,
           direction: DIRECTION_COLUMN,
           children: [],
@@ -86,19 +86,19 @@ export const noGhosts = {
       ghosts: [],
     },
     {
-      id: 't2',
+      id: 2,
       direction: DIRECTION_COLUMN,
       flex: 0.75,
       children: [
         {
-          id: 't21',
+          id: 21,
           flex: 0.5,
           direction: DIRECTION_COLUMN,
           children: [],
           ghosts: [],
         },
         {
-          id: 't22',
+          id: 22,
           flex: 0.5,
           direction: DIRECTION_COLUMN,
           children: [],

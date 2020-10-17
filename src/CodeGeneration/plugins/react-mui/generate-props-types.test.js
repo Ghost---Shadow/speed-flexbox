@@ -13,9 +13,9 @@ describe('generate-props', () => {
     });
     expect(prettyCode).toMatchInlineSnapshot(`
       "foo = {
-        prop1: PropTypes.string.isRequired,
-        prop2: PropTypes.string.isRequired,
-        prop3: PropTypes.func.isRequired,
+        prop01: PropTypes.string.isRequired,
+        prop02: PropTypes.string.isRequired,
+        prop03: PropTypes.func.isRequired,
       };
       "
     `);

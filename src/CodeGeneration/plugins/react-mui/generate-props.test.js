@@ -13,7 +13,7 @@ describe('generate-props', () => {
     });
     expect(prettyCode).toMatchInlineSnapshot(`
       "{
-        prop1, prop2, prop3;
+        prop01, prop02, prop03;
       }
       "
     `);

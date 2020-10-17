@@ -20,103 +20,103 @@ describe('generate-jss', () => {
       // import './debug.css'; // For debugging
 
       const useStyles = makeStyles({
-        wrappert0: {
+        wrapper00: {
           display: 'flex',
           flexDirection: 'row',
           flex: 1,
         },
-        wrappert1: {
+        wrapper01: {
           display: 'flex',
           flexDirection: 'row',
           flex: 0.25,
         },
-        wrappert11: {
+        wrapper11: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.25,
         },
-        ghost1: {
+        ghost01: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost2: {
+        ghost02: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        wrappert12: {
+        wrapper12: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.75,
         },
-        wrappert2: {
+        wrapper02: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.75,
         },
-        wrappert21: {
+        wrapper21: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.5,
         },
-        wrappert22: {
+        wrapper22: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.5,
         },
-        ghost3: {
+        ghost03: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost4: {
+        ghost04: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
-        ghost5: {
+        ghost05: {
           flex: 1,
           alignItems: 'center',
           justifyContent: 'center',
         },
       });
 
-      const MyComponent = ({ prop1, prop2, prop3 }) => {
-        const classes = useStyles({ prop1, prop2, prop3 });
-        const [ghostState4, setGhostState4] = React.useState('');
-        const [ghostState5, setGhostState5] = React.useState('');
+      const MyComponent = ({ prop01, prop02, prop03 }) => {
+        const classes = useStyles({ prop01, prop02, prop03 });
+        const [ghostState04, setGhostState04] = React.useState('');
+        const [ghostState05, setGhostState05] = React.useState('');
         return (
-          <div className={classes.wrappert0}>
-            <div className={classes.wrappert1}>
-              <div className={classes.wrappert11}>
-                <div className={classes.ghost1}>{prop1}</div>
-                <div className={classes.ghost2}>{prop2}</div>
+          <div className={classes.wrapper00}>
+            <div className={classes.wrapper01}>
+              <div className={classes.wrapper11}>
+                <div className={classes.ghost01}>{prop01}</div>
+                <div className={classes.ghost02}>{prop02}</div>
               </div>
 
-              <div className={classes.wrappert12}>.</div>
+              <div className={classes.wrapper12}>.</div>
             </div>
 
-            <div className={classes.wrappert2}>
-              <div className={classes.wrappert21}>.</div>
+            <div className={classes.wrapper02}>
+              <div className={classes.wrapper21}>.</div>
 
-              <div className={classes.wrappert22}>
-                <button type=\\"button\\" className={classes.ghost3} onClick={prop3}>
+              <div className={classes.wrapper22}>
+                <button type=\\"button\\" className={classes.ghost03} onClick={prop03}>
                   Button 3
                 </button>
 
                 <input
                   type=\\"text\\"
-                  className={classes.ghost4}
-                  onChange={(e) => setGhostState4(e.target.value)}
-                  value={ghostState4}
+                  className={classes.ghost04}
+                  onChange={(e) => setGhostState04(e.target.value)}
+                  value={ghostState04}
                 />
 
                 <input
                   type=\\"text\\"
-                  className={classes.ghost5}
-                  onChange={(e) => setGhostState5(e.target.value)}
-                  value={ghostState5}
+                  className={classes.ghost05}
+                  onChange={(e) => setGhostState05(e.target.value)}
+                  value={ghostState05}
                 />
               </div>
             </div>
@@ -125,9 +125,9 @@ describe('generate-jss', () => {
       };
 
       MyComponent.propTypes = {
-        prop1: PropTypes.string.isRequired,
-        prop2: PropTypes.string.isRequired,
-        prop3: PropTypes.func.isRequired,
+        prop01: PropTypes.string.isRequired,
+        prop02: PropTypes.string.isRequired,
+        prop03: PropTypes.func.isRequired,
       };
 
       export default MyComponent;
@@ -151,37 +151,37 @@ describe('generate-jss', () => {
       // import './debug.css'; // For debugging
 
       const useStyles = makeStyles({
-        wrappert0: {
+        wrapper00: {
           display: 'flex',
           flexDirection: 'row',
           flex: 1,
         },
-        wrappert1: {
+        wrapper01: {
           display: 'flex',
           flexDirection: 'row',
           flex: 0.25,
         },
-        wrappert11: {
+        wrapper11: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.25,
         },
-        wrappert12: {
+        wrapper12: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.75,
         },
-        wrappert2: {
+        wrapper02: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.75,
         },
-        wrappert21: {
+        wrapper21: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.5,
         },
-        wrappert22: {
+        wrapper22: {
           display: 'flex',
           flexDirection: 'column',
           flex: 0.5,
@@ -192,17 +192,17 @@ describe('generate-jss', () => {
         const classes = useStyles();
 
         return (
-          <div className={classes.wrappert0}>
-            <div className={classes.wrappert1}>
-              <div className={classes.wrappert11}>.</div>
+          <div className={classes.wrapper00}>
+            <div className={classes.wrapper01}>
+              <div className={classes.wrapper11}>.</div>
 
-              <div className={classes.wrappert12}>.</div>
+              <div className={classes.wrapper12}>.</div>
             </div>
 
-            <div className={classes.wrappert2}>
-              <div className={classes.wrappert21}>.</div>
+            <div className={classes.wrapper02}>
+              <div className={classes.wrapper21}>.</div>
 
-              <div className={classes.wrappert22}>.</div>
+              <div className={classes.wrapper22}>.</div>
             </div>
           </div>
         );

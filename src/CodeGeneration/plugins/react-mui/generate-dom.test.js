@@ -12,36 +12,36 @@ describe('generate-dom', () => {
       singleQuote: true,
     });
     expect(prettyCode).toMatchInlineSnapshot(`
-      "<div className={classes.wrappert0}>
-        <div className={classes.wrappert1}>
-          <div className={classes.wrappert11}>
-            <div className={classes.ghost1}>{prop1}</div>
-            <div className={classes.ghost2}>{prop2}</div>
+      "<div className={classes.wrapper00}>
+        <div className={classes.wrapper01}>
+          <div className={classes.wrapper11}>
+            <div className={classes.ghost01}>{prop01}</div>
+            <div className={classes.ghost02}>{prop02}</div>
           </div>
 
-          <div className={classes.wrappert12}>.</div>
+          <div className={classes.wrapper12}>.</div>
         </div>
 
-        <div className={classes.wrappert2}>
-          <div className={classes.wrappert21}>.</div>
+        <div className={classes.wrapper02}>
+          <div className={classes.wrapper21}>.</div>
 
-          <div className={classes.wrappert22}>
-            <button type=\\"button\\" className={classes.ghost3} onClick={prop3}>
+          <div className={classes.wrapper22}>
+            <button type=\\"button\\" className={classes.ghost03} onClick={prop03}>
               Button 3
             </button>
 
             <input
               type=\\"text\\"
-              className={classes.ghost4}
-              onChange={(e) => setGhostState4(e.target.value)}
-              value={ghostState4}
+              className={classes.ghost04}
+              onChange={(e) => setGhostState04(e.target.value)}
+              value={ghostState04}
             />
 
             <input
               type=\\"text\\"
-              className={classes.ghost5}
-              onChange={(e) => setGhostState5(e.target.value)}
-              value={ghostState5}
+              className={classes.ghost05}
+              onChange={(e) => setGhostState05(e.target.value)}
+              value={ghostState05}
             />
           </div>
         </div>

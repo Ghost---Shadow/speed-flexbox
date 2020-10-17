@@ -1,18 +1,12 @@
-- Image upload background
-- Segmentation hierarchy, subdivision and directions
-- Move segments with mouse
-- Save file export
-- React + JSS export
-- Serve statically on github.io
---------------------------------------------------------------------
-- Average pixels color to get background color
-- Props and request from parent button
-- Component name
-- StyledComponents
-- React + CSS
-- margin padding
---------------------------------------------------------------------
-- Live render?
-- Reuse Components?
-- Redux?
-- React Provider?
+- Bug: Rotate on start
+- Bug: No display: flex on label ghosts
+- Bug: dont flex buttons
+- min width and height for outer wrapper
+- bgcolor of button should be transparent
+-------------------------------------------------------
+- auto detect font size for label ghosts
+- image ghost
+-------------------------------------------------------
+- default justifycontent and align items
+- Fixed height toggle
+- Relative padding

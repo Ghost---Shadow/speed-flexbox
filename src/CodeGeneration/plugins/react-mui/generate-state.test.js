@@ -12,8 +12,8 @@ describe('generate-jss', () => {
       singleQuote: true,
     });
     expect(prettyCode).toMatchInlineSnapshot(`
-      "const [ghostState4, setGhostState4] = React.useState('');
-      const [ghostState5, setGhostState5] = React.useState('');
+      "const [ghostState04, setGhostState04] = React.useState('');
+      const [ghostState05, setGhostState05] = React.useState('');
       "
     `);
   });

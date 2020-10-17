@@ -26,9 +26,9 @@ describe('generate-storybook', () => {
 
       export const normal = () => (
         <MyComponent
-          prop1={text('prop1', 'placeholder_prop1')}
-          prop2={text('prop2', 'placeholder_prop2')}
-          prop3={action('prop3OnClick')}
+          prop01={text('prop01', 'placeholder_prop01')}
+          prop02={text('prop02', 'placeholder_prop02')}
+          prop03={action('prop03OnClick')}
         />
       );
 
